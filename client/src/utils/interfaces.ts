@@ -9,3 +9,10 @@ export interface Post {
     body: string,
     authorId: string
 }
+
+export interface Ingredient {
+    _id?: string,
+    name: string,
+    brand: string,
+    include?: boolean
+}
