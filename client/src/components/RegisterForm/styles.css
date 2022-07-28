@@ -1,0 +1,23 @@
+.RegisterForm_hidden{
+    display: none
+}
+
+.RegisterForm_information{
+    display: inline
+}
+
+.RegisterForm_check{
+    display: inline,
+}
+
+.fa-check{
+    color: green
+}
+
+.RegisterForm_times{
+    display: inline
+}
+
+.fa-xmark{
+    color: red
+}
