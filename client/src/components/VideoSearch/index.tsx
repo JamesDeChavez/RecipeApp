@@ -3,12 +3,10 @@ import { Video } from "../../utils/interfaces";
 import VideosList from "../VideosList";
 
 interface Props {
-    setSelectedVideo: React.Dispatch<React.SetStateAction<Video | undefined>>
-}
+    setVidSelected: React.Dispatch<React.SetStateAction<Video | undefined>>
+};
 
-const className = 'videoSearch';
-
-const VideoSearch: React.FC<Props> = ({ setSelectedVideo }) => {
+const VideoSearch: React.FC<Props> = ({ setVidSelected }) => {
     
     const [videos, setVideos] = useState<Video[]>([]);
     const [inputs, setInputs] = useState({
@@ -26,7 +24,7 @@ const VideoSearch: React.FC<Props> = ({ setSelectedVideo }) => {
 
     const apiKey = '';    
 
-    const onSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (!inputs.search) {
@@ -48,7 +46,7 @@ const VideoSearch: React.FC<Props> = ({ setSelectedVideo }) => {
         setVideos(newVideosState);        
     };
 
-    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (!inputs.url) {
@@ -70,10 +68,10 @@ const VideoSearch: React.FC<Props> = ({ setSelectedVideo }) => {
                 videoId: data.items[0].id
         };
         
-        setSelectedVideo(newVideoState);        
+        setVidSelected(newVideoState);        
     };
 
-    const onSelectNoVideo = async (e: React.FormEvent<HTMLFormElement>) => {
+    const selectNoVideo = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         
         const newVideoState = {
@@ -83,33 +81,34 @@ const VideoSearch: React.FC<Props> = ({ setSelectedVideo }) => {
             videoId: 'N/A'
         };
     
-        setSelectedVideo(newVideoState);        
+        setVidSelected(newVideoState);        
     };
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setInputs((prevState) => ({ ...prevState, [e.target.id]: value }));
     };
     
-    const onClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const handleClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
         e.preventDefault();
         console.log(e.currentTarget.dataset.video);
         const video = JSON.parse(e.currentTarget.dataset.video!);
-        setSelectedVideo(video);
+        setVidSelected(video);
     }
- 
+    
+    const className = 'videoSearch';
     return (
         <div className={className}>
             <h4>Video for Recipe</h4>
 
             <h5>Option 1: Search Youtube for New Recipe</h5>
-            <form onSubmit={onSearch}>
+            <form onSubmit={handleSearch}>
                 <input 
                     type='text'
                     id='search'
                     placeholder='Search for video here'
                     value={inputs.search}
-                    onChange={onChange}
+                    onChange={handleChange}
                     autoComplete='off'
                 />                
                 <button type='submit' >Search</button>
@@ -119,17 +118,17 @@ const VideoSearch: React.FC<Props> = ({ setSelectedVideo }) => {
             {!videos.length ?
                 <></>
             :
-                <VideosList videos={videos} onClick={onClick} />
+                <VideosList videos={videos} onClick={handleClick} />
             }
 
             <h5>Option 2: Provide Youtube URL</h5>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input 
                     type='text'
                     id='url'
                     placeholder='Provide URL here'
                     value={inputs.url}
-                    onChange={onChange}
+                    onChange={handleChange}
                     autoComplete='off' 
                 />
                 <button type='submit'>Submit</button>
@@ -137,7 +136,7 @@ const VideoSearch: React.FC<Props> = ({ setSelectedVideo }) => {
             <span>{errors.url}</span>
 
             <h5>Option 3: No Video Needed</h5>
-            <form onSubmit={onSelectNoVideo}>
+            <form onSubmit={selectNoVideo}>
                 <button type='submit'>Select</button>
             </form>
         </div>

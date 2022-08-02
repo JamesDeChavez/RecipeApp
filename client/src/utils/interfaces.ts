@@ -50,3 +50,15 @@ export interface Video {
     channel: string,
     videoId: string
 }
+
+export interface Recipe {
+    video: Video,
+    ingredients: string[],
+    instructions: string[]
+}
+
+export interface Profile {
+    username: string,
+    email: string,
+    password: string
+}
