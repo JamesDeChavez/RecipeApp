@@ -1,0 +1,30 @@
+.YoutubeSearch {
+    text-align: center;
+}
+
+.YoutubeSearch_form {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.YoutubeSearch_form > input {
+    margin: 0 25% 20px 25%;
+    border: none;
+    border-bottom: 1px solid #4d4e55;
+    background: none;
+    color: #4d4e55;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+}
+
+.YoutubeSearch_buttonContainer > button {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    background-color: #4D4E55;
+    color: #FFFFFF;
+    padding: 10px;
+    margin: 0 10px 0 10px;
+}
+
+.YoutubeSearch_buttonContainer > button:hover {
+    cursor: pointer;
+    opacity: 50%;
+}

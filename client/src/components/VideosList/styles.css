@@ -1,0 +1,69 @@
+.videosList{
+    grid-column: 1/4;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: space-between;
+}
+
+.videosList_header {
+    grid-column: 1/5;
+}
+
+.videosList_listitem {
+    font-family: 'GTAmerica-Light',sans-serif;
+    width: 200px;
+    display: grid;
+}
+
+.videosList_listitem > img {
+    width: 200px;
+    height: auto;
+}
+
+.videosList_listitem > p {
+    font-size: 12px;
+    margin: 0;
+}
+
+.videosList_listitem > h5 {
+    margin: 0 0 10px 0;
+}
+
+.videosList_listitem > button {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    background-color: #4D4E55;
+    color: #FFFFFF;
+    width: 100px;
+    padding: 10px;
+    align-self: flex-end;
+    margin-bottom: 20px;
+}
+
+.videosList_listitem > button:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.videosList_pagination {
+    grid-column: 1/5;
+    display: flex;
+    align-items: center;
+}
+
+.fa-circle-left, .fa-circle-right {
+    color: #4D4E55;
+    margin: 0 20px 0 0;
+    width: 30px;
+    height: auto;
+}
+
+.fa-circle-left:hover, .fa-circle-right:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.videosList_disabled {
+    opacity: 50%;
+    cursor: default !important;
+}

@@ -1,0 +1,72 @@
+.Landing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 0 20px 0;
+    height: 70vh;
+    width: 100vw;
+    align-items: flex-start;
+    column-gap: 20px;
+}
+
+.Landing_leftContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: flex-start;
+    padding-left: 40%;
+    color: #FFFFFF;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    line-height: 2em;
+    animation: slideLeftToRight 1s forwards;
+}
+
+.Landing_leftContainer > h3 {
+    font-size: 40px;
+}
+
+.Landing_image {
+    height: auto;
+    width: auto;
+    max-height: 70vh;
+    max-width: 40vw;
+    animation: slideRightToLeft 1s forwards;
+}
+
+.Landing_leftContainer > button {
+    padding: 10px;
+    font-family: 'GTAmerica-Light',sans-serif;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    text-transform: uppercase;
+    font-size: 11px;
+    background: linear-gradient(to left, #384558 50%, #7796a3 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+    margin-bottom: 20px;
+}
+
+.Landing_leftContainer > button:hover {
+    cursor: pointer;
+    background-position: left;
+}
+
+@media screen and (max-width: 1200px){
+    .Landing {
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .Landing_leftContainer {
+        padding: 0;
+        justify-items: center;
+    }
+
+    .Landing_leftContainer > p {
+        text-align: center;
+    }
+
+    .Landing_image {
+        max-width: 80vw;
+        max-height: 40vh;
+    }
+}

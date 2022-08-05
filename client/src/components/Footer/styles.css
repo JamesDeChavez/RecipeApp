@@ -1,0 +1,17 @@
+.Footer {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    padding: 0 5% 0 5%;
+    margin-right: 10%;
+    height: 50px;
+    background-color: #384558;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color:#FFFFFF;
+}
+
+.Footer_link {
+    color:#FFFFFF;
+}

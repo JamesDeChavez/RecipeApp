@@ -1,0 +1,16 @@
+.NoVidForm {
+    text-align: center;
+}
+
+.NoVidForm_form > button {
+    margin: 0 40% 0 40%;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    background-color: #4D4E55;
+    color: #FFFFFF;
+    padding: 10px;
+}
+
+.NoVidForm_form > button:hover {
+    cursor: pointer;
+    opacity: 50%;
+}

@@ -1,0 +1,20 @@
+.videoSearch_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 3fr;
+    background-color: #F7F6F4;
+    padding: 20px 0 20px 0;
+    margin: 0 0 0 10%;
+    height: 70vh;
+    animation: slideRightToLeft 1s forwards;
+}
+
+.videoSearch_header {
+    font-size: 50px;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #4d4e55;
+    margin: 0;
+    text-align: center;
+    grid-column: 1/4;
+}
+

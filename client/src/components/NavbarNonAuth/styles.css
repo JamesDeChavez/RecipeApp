@@ -1,0 +1,49 @@
+.NavbarNonAuth {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    background-color: #384558;
+    padding: 0 5%;
+}
+
+.NavbarNonAuth_logoContainer {
+    height: 100%;
+    width: 100%;
+}
+
+.NavbarNonAuth_logo {
+    max-width: 100%;
+    max-height: 100%;
+    transition: .5s ease-out;
+}
+
+.NavbarNonAuth_logo:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.NavbarNonAuth_list {
+    list-style-type: none;
+    display: flex;   
+    justify-content: end;
+    gap: 20px;
+}
+
+.NavbarNonAuth_listitem {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-family: 'GTAmerica-Light',sans-serif;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    text-transform: uppercase;
+    font-size: 11px;
+    background: linear-gradient(to left, #384558 50%, #7796a3 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+}
+
+.NavbarNonAuth_listitem:hover {
+    cursor: pointer;
+    background-position: left;
+}
