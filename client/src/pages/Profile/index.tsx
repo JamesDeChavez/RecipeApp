@@ -3,6 +3,7 @@ import ProfileForm from "../../components/ProfileForm";
 import ViewProfile from "../../components/ViewProfile";
 
 const mockProfile = {
+    _id: '123',
     username: 'fakeUser',
     email: 'fakeemail@gmail.com',
     password: 'Fakepassword123!'
@@ -18,7 +19,7 @@ const Profile = () => {
             {!editActive ?
                 <ViewProfile profile={mockProfile} setEditActive={setEditActive} />
             :
-                <ProfileForm profile={mockProfile} />
+                <ProfileForm profile={mockProfile} setEditActive={setEditActive} />
             }
         </div>
     );

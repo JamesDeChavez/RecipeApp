@@ -1,0 +1,5 @@
+.AuthHomePage {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #384558 50%, #FFFFFF 50%) top;
+}

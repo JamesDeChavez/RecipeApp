@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import OrderIngredientsForm from "../../components/OrderIngredientsForm";
 import RecipeComponent from "../../components/RecipeComponent";
-import { Recipe } from "../../utils/interfaces";
+import { Ingredient, Recipe } from "../../utils/interfaces";
 
 interface Props {
     recipe: Recipe,
@@ -10,13 +10,19 @@ interface Props {
 
 const RecipePage: React.FC<Props> = ({ recipe, setEditActive }) => {
     const [orderActive, setOrderActive] = useState(false);
+    const [ingredients, setIngredients] = useState<Ingredient[]>([]);
 
-    const className = 'RecipePage'
+    const className = 'RecipePage';
     return (
         <div className={className}>
             <h3>Recipe Page</h3>
             {!orderActive ?
-                <RecipeComponent recipe={recipe} setEditActive={setEditActive} setOrderActive={setOrderActive} />
+                <RecipeComponent 
+                    recipe={recipe} 
+                    setEditActive={setEditActive} 
+                    setOrderActive={setOrderActive} 
+                    setIngredients={setIngredients}
+                />
             :
                 <OrderIngredientsForm />
             }

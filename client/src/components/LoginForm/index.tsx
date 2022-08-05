@@ -1,50 +1,52 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LoginInputs } from '../../utils/interfaces';
-import { Link, useNavigate } from 'react-router-dom';
 import './styles.css';
 
+interface Props {
+    renderConstants: string[],
+    setRender: React.Dispatch<React.SetStateAction<string>>
+};
 
-const LoginForm = () => {
+const LoginForm: React.FC<Props> = ({ renderConstants, setRender }) => {
     const [loginInputs, setLoginInputs] = useState<LoginInputs>({
         username: '',
         password: ''
     });
 
-    const [errMsg, setErrMsg] = useState('');
-
-    const navigate = useNavigate();
+    const [errMsg, setErrMsg] = useState('error');
 
     useEffect(() => {
         setErrMsg('');
     }, [loginInputs]);
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setLoginInputs((prevState) => ({ ...prevState, [e.target.id]: value }));
     };
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(loginInputs);
-        navigate('/contents')
-    }
+    };
+
+    const goToSignup = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        setRender(renderConstants[2]);
+    };
 
     const className = 'LoginForm';
 
     return (
         <div className={className}>
-            <form onSubmit={onSubmit} className={`${className}_form`}>
-                <p className={errMsg ? `${className}_errMsg` : `${className}_hidden`}>
-                    {errMsg}
-                </p>
-                <h1>Login</h1>
+            <form onSubmit={handleSubmit} className={`${className}_form`}>
+                <h3 className={`${className}_header`}>Login</h3>
                 <label htmlFor='username'>Username:</label>
                 <input 
                     type='text'
                     id='username'
                     autoComplete='off'
                     value={loginInputs.username}
-                    onChange={onChange}
+                    onChange={handleChange}
                     required
                 />
                 <label htmlFor='password'>Password:</label>
@@ -52,7 +54,7 @@ const LoginForm = () => {
                     type='password'
                     id='password'
                     value={loginInputs.password}
-                    onChange={onChange}
+                    onChange={handleChange}
                     required
                 />                
                 <button 
@@ -63,7 +65,8 @@ const LoginForm = () => {
                 </button>
                 <p>
                     Don't have an account?<br/>
-                    <Link to='/register'>Sign Up</Link>
+                    <a className={`${className}_link`} onClick={goToSignup}>Sign Up</a>
+                    
                 </p>
             </form>
         </div>

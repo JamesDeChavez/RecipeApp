@@ -1,34 +1,42 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import Footer from "../../components/Footer";
 import Landing from "../../components/Landing";
 import LoginForm from "../../components/LoginForm";
+import NavbarNonAuth from "../../components/NavbarNonAuth";
 import RegisterForm from "../../components/RegisterForm";
 import Sample from "../../components/Sample";
+import './styles.css';
 
-const NonAuthHomePage = () => {
+interface Props {
+    setAuth: React.Dispatch<React.SetStateAction<boolean>>
+};
+
+const NonAuthHomePage: React.FC<Props> = ({ setAuth }) => {
     const RENDERS = ['DEFAULT', 'LOGIN', 'SIGNUP', 'SAMPLE'];
     const [render, setRender] = useState('DEFAULT');
-
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, renderOption: string) => {
-        e.preventDefault();
-        setRender(renderOption);
-    }; 
 
     const className ='NonAuthHomePage';
     return (
         <div className={className}>
-            <h3>Non-Authorized Home Page</h3>
-            <button onClick={(e) => handleClick(e, RENDERS[0])}>Default</button>
-            <button onClick={(e) => handleClick(e, RENDERS[1])}>Login</button>
-            <button onClick={(e) => handleClick(e, RENDERS[2])}>Signup</button>
-            <button onClick={(e) => handleClick(e, RENDERS[3])}>Sample</button>
+            <NavbarNonAuth renderConstants={RENDERS} setRender={setRender} setAuth={setAuth} />
             {
                 {
-                    [RENDERS[0]]: <Landing/>,
-                    [RENDERS[1]]: <LoginForm/>,
-                    [RENDERS[2]]: <RegisterForm/>,
+                    [RENDERS[0]]: <Landing 
+                        renderConstants={RENDERS} 
+                        setRender={setRender}
+                    />,
+                    [RENDERS[1]]: <LoginForm 
+                        renderConstants={RENDERS} 
+                        setRender={setRender}
+                    />,
+                    [RENDERS[2]]: <RegisterForm 
+                        renderConstants={RENDERS} 
+                        setRender={setRender}
+                    />,
                     [RENDERS[3]]: <Sample/>
                 }[render]
             }
+            <Footer />
         </div>
     )
 };

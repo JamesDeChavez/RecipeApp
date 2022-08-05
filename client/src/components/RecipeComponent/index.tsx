@@ -1,31 +1,35 @@
 import React from "react";
-import { Recipe } from "../../utils/interfaces";
+import { Ingredient, Recipe } from "../../utils/interfaces";
+import RecipeIngredients from "../RecipeIngredients";
+import RecipeInstructions from "../RecipeInstructions";
+import RecipeVideo from "../RecipeVideo";
 
 interface Props {
     recipe: Recipe,
     setEditActive: React.Dispatch<React.SetStateAction<boolean>>,
-    setOrderActive: React.Dispatch<React.SetStateAction<boolean>>
+    setOrderActive: React.Dispatch<React.SetStateAction<boolean>>,
+    setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>
 }
 
-const RecipeComponent: React.FC<Props> = ({ recipe, setEditActive, setOrderActive }) => {
+const RecipeComponent: React.FC<Props> = ({ recipe, setEditActive, setOrderActive, setIngredients }) => {
     
     const editRecipe = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         setEditActive(prevState => !prevState);
     };
-
-    const orderIngredients = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault();
-        setOrderActive(prevState => !prevState);
-    };
     
     const className= 'Recipe';
     return (
         <div className={className}>
-            <h3>Recipe Component</h3>
+            <h3>{`Recipe: ${recipe.title} by ${recipe.video.channel}`}</h3>
+            
+            <RecipeVideo video={recipe.video} />
+
+            <RecipeInstructions instructions={recipe.instructions} />
+
+            <RecipeIngredients ingredients={recipe.ingredients} setOrderActive={setOrderActive} setIngredients={setIngredients} />
+
             <button onClick={editRecipe}>Edit Recipe</button>
-            <button onClick={orderIngredients}>Order Ingredients</button>
-            <div>{recipe.video.title}</div>
         </div>
     );
 };

@@ -16,7 +16,20 @@ const ViewProfile: React.FC<Props> = ({ profile, setEditActive }) => {
     return (
         <div className={className}>
             <h3>View Profile Component</h3>
-            <div>{profile.username}</div>
+            <ul>
+                <li>
+                    <div>Username:</div>
+                    <div>{profile.username}</div>
+                </li>
+                <li>
+                    <div>Email:</div>
+                    <div>{profile.email}</div>
+                </li>
+                <li>
+                    <div>Password:</div>
+                    <div>{profile.password}</div>
+                </li>
+            </ul>
             <button onClick={handleClick}>Edit Profile</button>
         </div>
     );

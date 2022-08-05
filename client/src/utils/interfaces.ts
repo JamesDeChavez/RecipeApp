@@ -52,12 +52,14 @@ export interface Video {
 }
 
 export interface Recipe {
+    title: string,
     video: Video,
     ingredients: string[],
     instructions: string[]
 }
 
 export interface Profile {
+    _id?: string,
     username: string,
     email: string,
     password: string

@@ -17,7 +17,7 @@ const EditRecipe: React.FC<Props> = ({ recipe }) => {
             {!editActive ?
                 <RecipePage recipe={recipe} setEditActive={setEditActive} />
             :
-                <EditRecipeForm recipe={recipe} />
+                <EditRecipeForm recipe={recipe} setEditActive={setEditActive} />
             }
         </div>
     );

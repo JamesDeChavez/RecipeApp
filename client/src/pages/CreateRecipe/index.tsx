@@ -9,7 +9,6 @@ const CreateRecipe = () => {
     const className = 'CreateRecipe';
     return (
         <div className={className}>
-            <h3>Create Recipe Page</h3>
             {!vidSelected ?
                 <VideoSearch setVidSelected={setVidSelected}/>
             :

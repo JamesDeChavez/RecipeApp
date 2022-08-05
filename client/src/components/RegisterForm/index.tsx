@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { USER_REGEX, EMAIL_REGEX, PWD_REGEX } from '../../utils/regex';
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RegisterFocus, RegisterInputs, RegisterValidChecks } from '../../utils/interfaces';
 import './styles.css';
-import { Link, useNavigate } from 'react-router-dom';
 
+interface Props {
+    renderConstants: string[],
+    setRender: React.Dispatch<React.SetStateAction<string>>
+};
 
-const RegisterForm = () => {
+const RegisterForm: React.FC<Props> = ({ renderConstants, setRender }) => {
     const [registerInputs, setRegisterInputs] = useState<RegisterInputs>({
         username: '',
         email: '',
@@ -30,8 +33,6 @@ const RegisterForm = () => {
     });
 
     const [errMsg, setErrMsg] = useState('');
-
-    const navigate = useNavigate();
     
     useEffect(() => {
         const result = USER_REGEX.test(registerInputs.username);
@@ -53,20 +54,20 @@ const RegisterForm = () => {
         setErrMsg('');
     }, [registerInputs]);
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setRegisterInputs((prevState) => ({ ...prevState, [e.target.id]: value }));
     };
 
-    const onFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+    const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
         setFocus({ ...focus, [e.target.id]: true });
     };
 
-    const onBlur = (e: React.FocusEvent<HTMLInputElement, Element>) => {
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement, Element>) => {
         setFocus({ ...focus, [e.target.id]: false });
     };
 
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const valid1 = USER_REGEX.test(registerInputs.username);
         const valid2 = EMAIL_REGEX.test(registerInputs.email);
@@ -76,18 +77,18 @@ const RegisterForm = () => {
             return;
         }
         console.log(registerInputs);
-        navigate('/contents')
-    }
+    };
+
+    const goToLogin = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        setRender(renderConstants[1]);
+    };
 
     const className = 'RegisterForm';
-
     return (
         <div className={className}>
-            <form onSubmit={onSubmit} className={`${className}_form`}>
-                <p className={errMsg ? `${className}_errMsg` : `${className}_hidden`}>
-                    {errMsg}
-                </p>
-                <h1>Register</h1>
+            <form onSubmit={handleSubmit} className={`${className}_form`}>
+                <h3 className={`${className}_header`}>Register</h3>
                 <label htmlFor='username'>
                     Username:
                     <span className={registerValid.username ? `${className}_check` : `${className}_hidden`}>
@@ -102,9 +103,9 @@ const RegisterForm = () => {
                     id='username'
                     autoComplete='off'
                     value={registerInputs.username}
-                    onChange={onChange}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                     required
                 />
                 <p className={focus.username && registerInputs.username && !registerValid.username ? `${className}_instructions` : `${className}_hidden`}>
@@ -127,9 +128,9 @@ const RegisterForm = () => {
                     id='email'
                     autoComplete='off'
                     value={registerInputs.email}
-                    onChange={onChange}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                     required 
                 />
                 <p className={focus.email && registerInputs.email && !registerValid.email ? `${className}_instructions` : `${className}_hidden`}>
@@ -149,9 +150,9 @@ const RegisterForm = () => {
                     type='password'
                     id='password'
                     value={registerInputs.password}
-                    onChange={onChange}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                     required
                 />
                 <p className={focus.password && !registerValid.password ? `${className}_instructions` : `${className}_hidden`}>
@@ -172,9 +173,9 @@ const RegisterForm = () => {
                     type='password'
                     id='confirmPW'
                     value={registerInputs.confirmPW}
-                    onChange={onChange}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                     required
                 />
                 <p className={focus.confirmPW && !registerValid.confirmPW ? `${className}_instructions` : `${className}_hidden`}>
@@ -188,8 +189,8 @@ const RegisterForm = () => {
                     Sign Up
                 </button>
                 <p>
-                    Already registerd?<br/>
-                    <Link to='/login'>Sign In</Link>
+                    Already registered?<br/>
+                    <a className={`${className}_link`} onClick={goToLogin}>Sign In</a>
                 </p>
             </form>
         </div>
