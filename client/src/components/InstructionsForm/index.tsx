@@ -1,4 +1,6 @@
 import React from "react";
+import InstructionsFormItem from "../InstructionsFormItem";
+import './styles.css';
 
 interface Props {
     instructions: { text: string }[],
@@ -32,25 +34,10 @@ const InstructionsForm: React.FC<Props> = ({ instructions, setInstructions, vidR
     const className = 'InstructionsForm';
     return(
         <div className={className} >
-            <h4>Instructions</h4>
-            <form>
-                {instructions.map((step, index) => {
-                    return (
-                        <div key={`step_${index+1}`}>
-                            <label htmlFor={`step_${index+1}`}>{`Step ${index+1}: `}</label>
-                            <input 
-                                type='text'
-                                id={`step_${index+1}`}
-                                value={step.text}
-                                autoComplete='off'
-                                onChange={(e) => onChange(e, index)}
-                            />
-                            <button onClick={(e) => deleteStep(e, index)}>Delete</button>
-                        </div>
-                    )
-                })}
-                <button onClick={addStep}>Add Step</button>
-            </form>
+            <h4 className={`${className}_header`}>Instructions:</h4>
+            <ul className={`${className}_list`}>
+                <InstructionsFormItem />
+            </ul>
         </div>
     );
 };

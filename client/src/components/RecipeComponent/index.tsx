@@ -3,6 +3,7 @@ import { Ingredient, Recipe } from "../../utils/interfaces";
 import RecipeIngredients from "../RecipeIngredients";
 import RecipeInstructions from "../RecipeInstructions";
 import RecipeVideo from "../RecipeVideo";
+import './styles.css';
 
 interface Props {
     recipe: Recipe,

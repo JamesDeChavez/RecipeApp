@@ -1,0 +1,164 @@
+.CreateRecipeForm {
+    height: 100vh;
+    display: grid;
+    align-items: center;
+}
+
+.CreateRecipeForm_container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: calc(100vh - 130px);
+    padding: 80px 0 50px 0;
+}
+
+.CreateRecipeForm_leftContainer {
+    padding: 10px;
+}
+
+.CreateRecipeForm_iframeResponsive {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.CreateRecipeForm_iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.CreateRecipeForm_formContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 10px;
+    align-items: flex-start;
+    grid-template-rows: 1fr 7fr 7fr 1fr;
+}
+
+.CreateRecipeForm_title {
+    border: none;
+    border-bottom: 1px solid #FFFFFF;
+    background: none;
+    color: #FFFFFF;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 20px;
+    align-self: center;
+}
+
+.CreateRecipeForm_title::placeholder {
+    color: #FFFFFF;
+}
+
+.CreateRecipeForm_title:focus-visible {
+    outline: none;
+}
+
+.CreateRecipeForm_buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.CreateRecipeForm_buttonContainer > button {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    background-color: #E97451;
+    color: #FFFFFF;
+    width: 150px;
+    padding: 10px;
+    margin: 5px auto 5px auto;
+    margin: 5px;
+    border: none;
+}
+
+.CreateRecipeForm_buttonContainer > button:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.CreateRecipeForm_save {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    background-color: #4D4E55;
+    color: #FFFFFF;
+    width: 100px;
+    padding: 10px;
+    margin: 5px auto 5px auto;
+    border: none;
+}
+
+.CreateRecipeForm_save:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+@media screen and (max-width: 1800px) {
+
+.CreateRecipeForm_container {
+    grid-template-columns: 11fr 4fr;
+}
+
+}
+
+@media screen and (max-width: 1700px) {
+
+.CreateRecipeForm_container {
+    grid-template-columns: 3fr 1fr;
+}
+
+}
+
+@media screen and (max-width: 1200px) {
+
+.CreateRecipeForm_container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.CreateRecipeForm_leftContainer {
+    width: 600px;
+    margin: auto;
+}
+
+.CreateRecipeForm_buttonContainer > button {
+    width: 100px;
+    padding: 5px;
+}
+
+.CreateRecipeForm_formContainer {
+    grid-template-columns: 1fr 1fr;
+    margin: 0 10px;
+    align-items: flex-start;
+    grid-template-rows: 1fr 8fr 1fr;
+}
+
+.CreateRecipeForm_title {
+    grid-column: 1/3;
+    color: #4D4E55;
+    border-color: #4D4E55;
+    width: 200px;
+}
+
+.CreateRecipeForm_title::placeholder {
+    color: #4D4E55;
+}
+
+.CreateRecipeForm_save {
+    grid-column: 1/3;
+    padding: 5px;
+}
+
+
+}
+
+@media screen and (max-width: 700px) {
+    
+.CreateRecipeForm_leftContainer {
+    width: 300px;
+}
+       
+}
+

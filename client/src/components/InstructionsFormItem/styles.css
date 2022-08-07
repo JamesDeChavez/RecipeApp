@@ -1,0 +1,23 @@
+.InstructionsFormItem {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.InstructionsFormItem_step {
+    color: #FFFFFF;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    margin: 0;
+}
+
+.InstructionsFormItem_iconContainer > .fa-pen-to-square, 
+.InstructionsFormItem_iconContainer > .fa-x {
+    color: #FFFFFF;
+    margin: 0 2px;
+}
+
+.InstructionsFormItem_iconContainer > .fa-pen-to-square:hover, 
+.InstructionsFormItem_iconContainer > .fa-x:hover {
+    cursor: pointer;
+    opacity: 50%;
+}

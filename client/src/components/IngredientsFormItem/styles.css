@@ -1,0 +1,25 @@
+.IngredientsFormItem {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.IngredientsFormItem_item {
+    color: #4d4e55;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.IngredientsFormItem_iconContainer > .fa-pen-to-square, 
+.IngredientsFormItem_iconContainer > .fa-x {
+    color: #4d4e55;
+    margin: 0 2px;
+}
+
+.IngredientsFormItem_iconContainer > .fa-pen-to-square:hover, 
+.IngredientsFormItem_iconContainer > .fa-x:hover {
+    cursor: pointer;
+    opacity: 50%;
+}

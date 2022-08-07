@@ -1,4 +1,6 @@
 import React from "react";
+import IngredientsFormItem from "../IngredientsFormItem";
+import './styles.css';
 
 interface Props {
     ingredients: { text: string }[],
@@ -32,25 +34,10 @@ const IngredientsForm: React.FC<Props> =({ ingredients, setIngredients, vidRef }
     const className = 'IngredientsForm';
     return (
         <div className={className}>
-            <h4>Ingredients</h4>
-            <form>
-                {ingredients.map((item, index) => {
-                    return (
-                        <div key={`item_${index+1}`}>
-                            <label htmlFor={`item_${index+1}`}>{`${index+1}. `}</label>
-                            <input 
-                                type='text'
-                                id={`item_${index+1}`}
-                                value={item.text}
-                                autoComplete='off'
-                                onChange={(e) => onChange(e, index)}
-                            />
-                            <button onClick={(e) => deleteItem(e, index)}>Delete</button>
-                        </div>
-                    )
-                })}
-                <button onClick={addItem}>Add Item</button>
-            </form>
+            <h4 className={`${className}_header`}>Ingredients:</h4>
+            <ul className={`${className}_list`}>
+                <IngredientsFormItem />
+            </ul>
         </div>
     );
 };
