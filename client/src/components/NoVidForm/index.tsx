@@ -17,7 +17,10 @@ const NoVidForm: React.FC<Props> = ({ setVidSelected }) => {
     const className= 'NoVidForm';
     return (
         <div className={className}>
-            <h5>Option 3: No Video Needed</h5>
+            <h5 className={`${className}_header`}>
+                Option 3: <br />
+                No Video Needed
+            </h5>
             <form className={`${className}_form`} onSubmit={handleSubmit}>
                 <button type='submit'>Select</button>
             </form>

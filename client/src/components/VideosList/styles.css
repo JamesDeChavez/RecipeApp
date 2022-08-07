@@ -6,38 +6,55 @@
     justify-content: space-between;
 }
 
+.videosList_backward {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #4D4E55;
+    width: 70px;
+}
+
+.videosList_backward:hover {
+    cursor: pointer;
+    opacity: 50%;
+} 
+
+
 .videosList_header {
     grid-column: 1/5;
+    margin-top: 0;
 }
 
 .videosList_listitem {
     font-family: 'GTAmerica-Light',sans-serif;
-    width: 200px;
     display: grid;
+    overflow: hidden;
+    animation: slideRightToLeft 0.5s forwards;
 }
 
 .videosList_listitem > img {
-    width: 200px;
+    width: 90%;
     height: auto;
+}
+
+.videosList_listitem > h5 {
+    margin: 5px 0 0 0;
+    height: 45px;
+    overflow: hidden;
+    width: 90%;
 }
 
 .videosList_listitem > p {
     font-size: 12px;
-    margin: 0;
-}
-
-.videosList_listitem > h5 {
-    margin: 0 0 10px 0;
+    width: 90%;
 }
 
 .videosList_listitem > button {
     font-family: 'GTSuperDisplay-Regular', sans-serif;
     background-color: #4D4E55;
     color: #FFFFFF;
-    width: 100px;
-    padding: 10px;
+    width: 70px;
+    padding: 5px;
     align-self: flex-end;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .videosList_listitem > button:hover {
@@ -66,4 +83,83 @@
 .videosList_disabled {
     opacity: 50%;
     cursor: default !important;
+}
+
+@media screen and (max-width: 1000px){
+
+.videosList{
+    grid-template-columns: 1fr 1fr;
+}
+
+.videosList_header {
+    grid-column: 1/3;
+}
+
+.videosList_pagination {
+    grid-column: 1/3;
+}
+
+.videosList_listitem > img {
+    width: 60%;
+}
+
+.videosList_listitem > h5 {
+    height: 30px;
+}
+
+.videosList_listitem > p {
+    margin: 0;
+}
+
+}
+
+@media screen and (max-width: 600px){
+
+.videosList {
+    grid-column: 1/2;
+    padding-left: 10px;
+}
+
+.videosList_header {
+    font-size: 12px;
+}
+
+.videosList_listitem > img {
+    width: 60%;
+}
+
+.videosList_listitem > h5 {
+    font-size: 12px;
+    height: 25px;
+}
+
+.videosList_listitem > p {
+    font-size: 10px;
+}
+
+.videosList_listitem > button {
+    font-size: 10px;
+}
+
+.videosList_pagination {
+    font-size: 12px;
+}
+
+}
+
+@media screen and (max-width: 600px) and (min-height: 800px){
+
+
+.videosList_listitem > img {
+    width: 90%;
+}
+
+}
+
+@media screen and (max-width: 1000px) and (min-height: 1000px){
+
+.videosList_listitem > img {
+    width: 90%;
+}
+
 }

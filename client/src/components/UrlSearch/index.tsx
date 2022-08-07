@@ -42,12 +42,15 @@ const UrlSearch: React.FC<Props> = ({ setVidSelected }) => {
     const className = 'UrlSearch';
     return (
         <div className={className}>
-            <h5>Option 2: Provide Youtube URL</h5>
+            <h5 className={`${className}_header`}>
+                Option 2: <br />
+                Provide Youtube URL
+            </h5>
             <form className={`${className}_form`} onSubmit={handleSubmit}>
                 <input 
                     type='text'
                     id='url'
-                    placeholder='Provide URL here'
+                    placeholder='* Enter URL'
                     value={input}
                     onChange={handleChange}
                     autoComplete='off' 

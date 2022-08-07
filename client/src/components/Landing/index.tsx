@@ -17,13 +17,16 @@ const Landing: React.FC<Props> = ({ renderConstants, setRender }) => {
     return (
         <div className={className}>
             <div className={`${className}_leftContainer`}>
-                <h3>Single Page Recipes</h3>
-                <p>
+                <h3 className={`${className}_header`}>
+                    Single Page <br />
+                    Recipes
+                </h3>
+                <p className={`${className}_text`}>
                     Discover Youtube Recipes<br/>
                     Easy Amazon Fresh Ordering<br/>
                     Single-page Interface - No Scrolling
                 </p>
-                <button onClick={handleClick}>View Sample Recipe</button>
+                <button onClick={handleClick} className={`${className}_button`}>View Sample Recipe</button>
             </div>            
             <img src={image} alt="cutting board image" className={`${className}_image`} />
 

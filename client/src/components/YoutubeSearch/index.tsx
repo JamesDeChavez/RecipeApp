@@ -3,13 +3,12 @@ import { Video } from "../../utils/interfaces";
 import './styles.css';
 
 interface Props {
-    videos: Video[],
     setVideos: React.Dispatch<React.SetStateAction<Video[]>>
 };
 
 const apiKey = ''; 
 
-const YoutubeSearch: React.FC<Props> = ({ videos, setVideos }) => {
+const YoutubeSearch: React.FC<Props> = ({ setVideos }) => {
     const [input, setInput] = useState('');
     const [error, setError] = useState('');
 
@@ -45,29 +44,23 @@ const YoutubeSearch: React.FC<Props> = ({ videos, setVideos }) => {
         }
     };
 
-    const cancelSearch = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault();
-        setVideos([]);
-    }
-
     const className = 'YoutubeSearch';
     return (
-        <div className={className}>
-            <h5>Option 1: Search Youtube for New Recipe</h5>
+        <div className={`${className}`}>
+            <h5 className={`${className}_header`}>
+                Option 1: <br />
+                Search Youtube
+            </h5>
             <form className={`${className}_form`} onSubmit={handleSubmit}>
                 <input 
                     type='text'
                     id='input'
-                    placeholder='Search for video here'
+                    placeholder='* Enter search'
                     value={input}
                     onChange={handleChange}
                     autoComplete='off'
                 /> 
-                <div className={`${className}_buttonContainer`}>
-                    <button type='submit' >Search</button>
-                    {videos.length ? <button onClick={cancelSearch}>Cancel</button> : <></> }
-                </div>               
-                    
+                <button type='submit' >Search</button>
             </form>
             <span>{error}</span>
         </div>

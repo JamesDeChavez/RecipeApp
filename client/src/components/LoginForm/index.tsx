@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { LoginInputs } from '../../utils/interfaces';
+import image from '../../assets/pexels-taryn-elliott-5107183.jpg';
 import './styles.css';
 
 interface Props {
@@ -38,37 +39,45 @@ const LoginForm: React.FC<Props> = ({ renderConstants, setRender }) => {
 
     return (
         <div className={className}>
-            <form onSubmit={handleSubmit} className={`${className}_form`}>
-                <h3 className={`${className}_header`}>Login</h3>
-                <label htmlFor='username'>Username:</label>
-                <input 
-                    type='text'
-                    id='username'
-                    autoComplete='off'
-                    value={loginInputs.username}
-                    onChange={handleChange}
-                    required
-                />
-                <label htmlFor='password'>Password:</label>
-                <input 
-                    type='password'
-                    id='password'
-                    value={loginInputs.password}
-                    onChange={handleChange}
-                    required
-                />                
-                <button 
-                    type='submit'
-                    disabled={!loginInputs.username || !loginInputs.password ? true : false} 
-                >
-                    Sign In
-                </button>
-                <p>
-                    Don't have an account?<br/>
-                    <a className={`${className}_link`} onClick={goToSignup}>Sign Up</a>
-                    
-                </p>
-            </form>
+            <div className={`${className}_container`}>
+                <div className={`${className}_imageContainer`}>
+                    <img src={image} alt="baking image" className={`${className}_img`} />
+                </div>
+                <form onSubmit={handleSubmit} className={`${className}_form`}>
+                    <h3 className={`${className}_header`}>Login</h3>
+                    <input 
+                        type='text'
+                        id='username'
+                        placeholder='* Username'
+                        autoComplete='off'
+                        value={loginInputs.username}
+                        onChange={handleChange}
+                        className={`${className}_input`}
+                        required
+                    />
+                    <input 
+                        type='password'
+                        id='password'
+                        placeholder='* Password'
+                        value={loginInputs.password}
+                        onChange={handleChange}
+                        className={`${className}_input`}
+                        required
+                    />                
+                    <button 
+                        type='submit'
+                        className={`${className}_button`}
+                        disabled={!loginInputs.username || !loginInputs.password ? true : false} 
+                    >
+                        Sign In
+                    </button>
+                    <p className={`${className}_text`}>
+                        Don't have an account?<br/>
+                        <a className={`${className}_link`} onClick={goToSignup}>Sign Up</a>
+                        
+                    </p>
+                </form>
+            </div>                
         </div>
     )
 };

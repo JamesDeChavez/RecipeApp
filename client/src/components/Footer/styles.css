@@ -10,8 +10,9 @@
     justify-content: flex-end;
     align-items: center;
     color:#FFFFFF;
+    animation: slideLeftToRight 1s forwards;
 }
 
-.Footer_link {
+.Footer_link, .Footer_link > a {
     color:#FFFFFF;
 }

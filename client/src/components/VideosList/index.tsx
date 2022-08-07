@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import { Video } from '../../utils/interfaces';
 import { Props as ParentProps } from '../VideoSearch';
-import { faCircleLeft, faCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { faCircleLeft, faCircleRight, faBackward } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './styles.css';
 
 interface Props extends ParentProps{
-    videos: Video[]
+    videos: Video[],
+    setVideos: React.Dispatch<React.SetStateAction<Video[]>>
 };
 
-const VideosList: React.FC<Props> = ({ videos, setVidSelected }) => {
+const VideosList: React.FC<Props> = ({ videos, setVideos, setVidSelected }) => {
     const [first, setFirst] = useState(0);
     const [last, setLast] = useState(4);
-    const [videosToRender, setVideosToRender] = useState<Video[]>(videos.slice(first, last));
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
@@ -28,11 +28,9 @@ const VideosList: React.FC<Props> = ({ videos, setVidSelected }) => {
         
         const newLast = lastTooBig ? videos.length : last + 4;
         const newFirst = newLast - 4;
-        const newVideosToRender = videos.slice(newFirst, newLast);
 
         setFirst(newFirst);
         setLast(newLast);
-        setVideosToRender(newVideosToRender);
     };
 
     const prevPage = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
@@ -42,18 +40,25 @@ const VideosList: React.FC<Props> = ({ videos, setVidSelected }) => {
 
         const newFirst = firstTooSmall ? 0 : first - 4;
         const newLast = newFirst + 4;
-        const newVideosToRender = videos.slice(newFirst, newLast);
 
         setFirst(newFirst);
         setLast(newLast);
-        setVideosToRender(newVideosToRender);
     };
+
+    const goBack = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        e.preventDefault();
+        setVideos([]);
+    }
 
     const className = 'videosList';
     return (
         <ul className={className}>
+            <span className={`${className}_backward`} onClick={goBack}>
+                <FontAwesomeIcon icon={faBackward} />
+                {` Back`}
+            </span>
             <h4 className={`${className}_header`}>{`Search Results (${videos.length} results):`} </h4>
-            {videosToRender.map(video => {
+            {videos.slice(first, last).map(video => {
                 return (
                     <li 
                         key={video.videoId}

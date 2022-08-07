@@ -5,7 +5,7 @@ const Footer = () => {
     const className = 'Footer';
     return (
         <div className={className}>
-            <p>Developed by <a href="https://www.google.com" className={`${className}_link`}>James DeChavez</a></p>
+            <p className={`${className}_link`}>Developed by <a href="https://www.google.com">James DeChavez</a></p>
         </div>
     );
 };

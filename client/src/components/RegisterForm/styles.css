@@ -1,29 +1,51 @@
-.RegisterForm_form {
+.RegisterForm {
+    height: 100vh;
     display: grid;
-    grid-template-columns: 4fr 6fr;
+    align-items: center;
+}
+
+.RegisterForm_container {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
     grid-template-rows: auto;
     background-color: #F7F6F4;
-    padding: 20px 10% 20px 0;
+    padding: 0 10% 0 0;
     margin-left: 10%;
     height: 70vh;
-    align-items: flex-start;
-    column-gap: 20px;
     animation: slideRightToLeft 1s forwards;
+    overflow: hidden;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+.RegisterForm_imageContainer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #384558;
+}
+
+.RegisterForm_image {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    opacity: 50%;
+}
+
+.RegisterForm_form {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: 100%;
+    padding-left: 10%;
 }
 
 .RegisterForm_header {
     font-size: 50px;
     font-family: 'GTSuperDisplay-Regular', sans-serif;
     color: #4d4e55;
-    grid-column: 2/3;
     margin: 0;
-}
-
-.RegisterForm_form > label {
-    justify-self: end;
-    margin-bottom: 10px;
-    font-family: 'GTSuperDisplay-Regular', sans-serif;
-    color: #4d4e55;
+    align-self: flex-end;
 }
 
 .RegisterForm_form > input {
@@ -32,24 +54,31 @@
     background: none;
     color: #4d4e55;
     font-family: 'GTSuperDisplay-Regular', sans-serif;
+    height: 20px;
+    line-height: 20px;
+    align-self: center;
+}
+
+.RegisterForm_form > input:focus-visible {
+    outline: none;
 }
 
 .RegisterForm_form > p {
     color: #4d4e55;
     font-family: 'GTSuperDisplay-Regular', sans-serif;
-    grid-column: 2/3;
+    font-size: 14px
 }
 
-.RegisterForm_form > button {
-    grid-column: 2/3;
+.RegisterForm_button {
     font-family: 'GTSuperDisplay-Regular', sans-serif;
     background-color: #4D4E55;
     color: #FFFFFF;
     width: 100px;
+    height: 50px;
     padding: 10px;
 }
 
-.RegisterForm_form > button:hover {
+.RegisterForm_button:hover {
     cursor: pointer;
     opacity: 50%;
 }
@@ -82,4 +111,39 @@
     cursor: pointer;
     text-decoration: underline;
     color: #384558;
+}
+
+
+@media screen and (max-width: 700px){
+
+.RegisterForm_imageContainer {
+    display: none;
+}
+
+.RegisterForm_form {
+    grid-column: 1/3;
+}
+
+.RegisterForm_form > p {
+    font-size: 12px;
+}
+
+.RegisterForm_header {
+    font-size: 40px;
+}
+
+.RegisterForm_button {
+    width: 80px;
+    height: 30px;
+    padding: 5px;
+}
+
+}
+
+@media screen and (max-width: 700px) and (min-height: 800px){
+    
+.RegisterForm_header {
+    font-size: 50px;
+}
+
 }

@@ -4,11 +4,17 @@
     justify-content: space-between;
     background-color: #384558;
     padding: 0 5%;
+    position: absolute;
+    top: 0;
+    width: 90%;
 }
 
 .NavbarNonAuth_logoContainer {
     height: 100%;
     width: 100%;
+    display: flex;
+    align-items: center;
+    animation: slideLeftToRight 1s forwards;
 }
 
 .NavbarNonAuth_logo {
@@ -26,7 +32,8 @@
     list-style-type: none;
     display: flex;   
     justify-content: end;
-    gap: 20px;
+    column-gap: 20px;
+    animation: slideRightToLeft 1s forwards;
 }
 
 .NavbarNonAuth_listitem {
@@ -37,7 +44,7 @@
     color: #FFFFFF;
     border: 1px solid #FFFFFF;
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: 10px;
     background: linear-gradient(to left, #384558 50%, #7796a3 50%) right;
     background-size: 200%;
     transition: .5s ease-out;
@@ -46,4 +53,30 @@
 .NavbarNonAuth_listitem:hover {
     cursor: pointer;
     background-position: left;
+}
+
+@media screen and (max-width: 1000px){
+
+.NavbarNonAuth_list {
+    column-gap: 5px;
+}
+
+.NavbarNonAuth_listitem {
+    padding: 0 5px;
+    font-size: 10px;
+}
+
+}
+
+@media screen and (min-height: 1000px){
+
+.NavbarNonAuth_list {
+    column-gap: 20px;
+}
+
+.NavbarNonAuth_listitem {
+    padding: 10px;
+    font-size: 15px;
+}
+
 }
