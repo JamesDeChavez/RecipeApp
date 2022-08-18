@@ -22,7 +22,7 @@ const NoVidForm: React.FC<Props> = ({ setVidSelected }) => {
                 No Video Needed
             </h5>
             <form className={`${className}_form`} onSubmit={handleSubmit}>
-                <button type='submit'>Select</button>
+                <button className={`${className}_button`} type='submit'>Select</button>
             </form>
         </div>
     );

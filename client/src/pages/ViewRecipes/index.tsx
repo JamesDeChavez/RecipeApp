@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import RecipeList from "../../components/RecipeList";
 import { Recipe } from "../../utils/interfaces";
-import EditRecipe from "../EditRecipe";
+import RecipePage from "../RecipePage";
 
 interface Props {
     renderConstants: string[],
@@ -14,11 +14,10 @@ const ViewRecipes: React.FC<Props> = (props) => {
     const className = 'ViewRecipes';
     return (
         <div className={className}>
-            <h3>View Recipe Component</h3>
             {!recipeSelected ?
                 <RecipeList setRecipeSelected={setRecipeSelected} {...props} />
             :
-                <EditRecipe recipe={recipeSelected} />
+                <RecipePage recipe={recipeSelected} setRecipeSelected={setRecipeSelected} />
             }
         </div>
     );

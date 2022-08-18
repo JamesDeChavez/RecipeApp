@@ -1,13 +1,22 @@
+.UrlSearch {
+    display: grid;
+    row-gap: 1em;
+    align-content: flex-start;
+}
 
 .UrlSearch_header {
     font-family: 'GTSuperDisplay-Regular',sans-serif;
     text-align: center;
+    margin: 0;
+    font-size: 1.2em;
+    color: #4d4e55;
 }
 
 .UrlSearch_form {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
+    row-gap: 1em;
 }
 
 .UrlSearch_form > input {
@@ -27,20 +36,11 @@
     font-family: 'GTSuperDisplay-Regular', sans-serif;
     background-color: #4D4E55;
     color: #FFFFFF;
-    padding: 10px;
-    width: 70px;
-    margin-top: 20px;
+    padding: 1em 2em;
+    border: none;
 }
 
 .UrlSearch_form > button:hover {
     cursor: pointer;
     opacity: 50%;
-}
-
-@media screen and (max-width: 900px){
-
-.UrlSearch_form > button {
-    padding: 5px;
-}
-
 }

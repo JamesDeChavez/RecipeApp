@@ -1,0 +1,70 @@
+.StepListItem{
+    display: grid;
+    background-color: #88888850;
+    border: solid 1px #888888;
+    box-shadow: 1px 1px 2px #888888;
+}
+
+.StepListItem:hover {
+    cursor: pointer;
+    border: solid 1px #FFFFFF;
+}
+
+.StepListItem_container {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 2fr 10fr 2fr;
+    align-items: center;
+}
+
+.StepListItem_number,
+.StepListItem_time,
+.StepListItem_action,
+.StepListItem_step {
+    margin: 0;
+    color: #FFFFFF;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    text-align: center;
+    font-size: .8em;
+}
+
+.StepListItem_step {
+    border-left: solid 1px #888888;
+    border-right: solid 1px #888888;
+}
+
+.StepListItem_numberContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.StepListItem_number {
+    position: absolute;
+    font-size: 1.3em;
+    line-height: 1.5em;
+    width: 1.5em;
+    background-color: #7796a3;
+    border: solid 1px #FFFFFF;
+    border-radius: 0.3em .3em 0 .3em;
+    font-weight: bolder;
+    top: -.3em;
+    left: -.5em;
+}
+
+/*WIDE VID VIEW*/
+
+.StepListItem_Wide:nth-child(n+ 8):hover {
+    border-color: #FFFFFF;
+    box-shadow: 0 0 0 1px #6f7379, 2px 2px 4px #6f7379;
+}
+
+.StepListItem_Wide:nth-child(n+ 8) {
+    background-color: #515a67;
+    border: solid 1px #384558;
+    box-shadow: 2px 2px 4px #6f7379;
+}
+
+.StepListItem_WideToDefault > div > p {
+    animation: noWrapUntilEnd .5s forwards;
+}

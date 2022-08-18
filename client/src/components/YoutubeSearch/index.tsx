@@ -26,14 +26,14 @@ const YoutubeSearch: React.FC<Props> = ({ setVideos }) => {
             setError('No Search Provided');
             return;
         };
-        const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input.replaceAll(' ', '%20')}&key=${apiKey}`;
+        const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&q=${input.replaceAll(' ', '%20')}&key=${apiKey}`;
         try {
             const res = await fetch(url);
             const data = await res.json();
             const newVideosState = data.items.map((video: any) => {
                 return ({
                     title: video.snippet.title,
-                    thumbnail: video.snippet.thumbnails.default.url,
+                    thumbnail: video.snippet.thumbnails.medium.url,
                     channel: video.snippet.channelTitle,
                     videoId: video.id.videoId
                 })
@@ -59,10 +59,11 @@ const YoutubeSearch: React.FC<Props> = ({ setVideos }) => {
                     value={input}
                     onChange={handleChange}
                     autoComplete='off'
+                    className={`${className}_input`}
                 /> 
-                <button type='submit' >Search</button>
+                <button className={`${className}_button`} type='submit' >Search</button>
             </form>
-            <span>{error}</span>
+            <span className={`${className}_error`}>{error}</span>
         </div>
     );
 };

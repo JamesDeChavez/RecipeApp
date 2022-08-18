@@ -1,0 +1,88 @@
+.RecipeVideo {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    background-color: #515a67;
+    padding: 2em 2% 2% 2%;   
+}
+
+.RecipeVideo_titleContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.RecipeVideo_title {
+    margin: 0;
+    position: absolute;
+    background-color: #7796a3;
+    border: solid 1px #FFFFFF;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    max-width: 90%;
+    padding: .2em .5em;
+    border-radius: 0.3em .3em 0 .3em;
+    font-weight: bolder;
+    top: -2em;
+    left: -.2em;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+}
+
+.RecipeVideo_iframeResponsive {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    border: solid 1px #FFFFFF;
+}
+
+.RecipeVideo_iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.RecipeVideo_viewsContainer {
+    display: flex;
+    justify-content: center;
+    column-gap: 5px;
+    margin-top: 10px;
+}
+
+.RecipeVideo_viewButton {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    background: linear-gradient(to left, #4d4e55 50%, #FFFFFF 50%) right;
+    background-size: 201%;
+    transition: .5s ease-out;
+    color: #FFFFFF;
+    border: solid 1px #FFFFFF;
+}
+
+.RecipeVideo_viewButton:hover {
+    cursor: pointer;
+    background-position: left;
+    color: #4d4e55;
+    border: solid 1px #4d4e55;
+}
+
+.RecipeVideo_viewButton_Disabled {
+    background-position: left;
+    color: #4d4e55 ;
+}
+
+.RecipeVideo_viewButton_Disabled:hover {
+    cursor: inherit;
+    color: #4d4e55 ;
+    border: solid 1px #FFFFFF;
+}
+
+/*WIDE VID VIEW*/
+
+.RecipeVideo_Wide {
+    box-shadow: 1px 1px 2px #888888;
+    border: solid 1px #888888;
+    animation: growHeightVideo .5s forwards;
+}
+

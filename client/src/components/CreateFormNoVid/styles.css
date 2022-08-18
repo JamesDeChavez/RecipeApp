@@ -1,0 +1,88 @@
+.CreateFormNoVid {
+    height: 100vh;
+    display: grid;
+    align-items: center;
+}
+
+.CreateFormNoVid_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: calc(100vh - 160px);
+    padding: 80px 10% 80px 10% ;
+}
+
+.CreateFormNoVid_backward {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #FFFFFF;
+}
+
+.CreateFormNoVid_backward:hover {
+    cursor: pointer;
+    opacity: 50%;
+} 
+
+.CreateFormNoVid_formContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    grid-template-rows: 1fr 1fr 7fr 7fr 2fr;
+    row-gap: 5px;
+}
+
+.CreateFormNoVid_title {
+    border: none;
+    border-bottom: 1px solid #FFFFFF;
+    background: none;
+    color: #FFFFFF;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 20px;
+    align-self: center;
+}
+
+.CreateFormNoVid_title::placeholder {
+    color: #FFFFFF;
+}
+
+.CreateFormNoVid_title:focus-visible {
+    outline: none;
+}
+
+.CreateFormNoVid_save {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    background-color: #4D4E55;
+    color: #FFFFFF;
+    width: 100px;
+    height: 40px;
+    border: none;
+}
+
+.CreateFormNoVid_save:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+@media screen and (max-width: 700px) {
+
+.CreateFormNoVid_container {
+    padding: 80px 5px 80px 5px ;
+}
+
+.CreateFormNoVid_save {
+    width: 100px;
+    height: 40px;
+}
+
+}
+
+@media screen and (max-height: 700px) and (min-width: 1000px) {
+
+.CreateFormNoVid_save {
+    width: 100px;
+    height: 30px;
+}
+
+}
+

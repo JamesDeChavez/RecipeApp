@@ -14,21 +14,21 @@
     height: 70vh;
     animation: slideRightToLeft 1s forwards;
     overflow: hidden;
-    box-shadow: 5px 10px 8px #888888;
+    box-shadow: 2px 2px 4px #888888;
+    border: solid 1px #888888;
 }
 
 .RegisterForm_imageContainer {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    background-color: #384558;
+    background: url('../../assets/pexels-cottonbro-3298605.jpg');
+    background-size: cover;
 }
 
-.RegisterForm_image {
-    max-width: 100%;
-    max-height: 100%;
+.RegisterForm_overlay {
     width: 100%;
     height: 100%;
+    background-color: #384558;
     opacity: 50%;
 }
 
@@ -37,45 +37,53 @@
     grid-template-columns: 1fr;
     width: 100%;
     height: 100%;
-    padding-left: 10%;
+    padding: 0 10%;
 }
 
 .RegisterForm_header {
-    font-size: 50px;
+    font-size: 3em;
     font-family: 'GTSuperDisplay-Regular', sans-serif;
     color: #4d4e55;
     margin: 0;
     align-self: flex-end;
 }
 
-.RegisterForm_form > input {
+.RegisterForm_input {
     border: none;
     border-bottom: 1px solid #4d4e55;
     background: none;
     color: #4d4e55;
     font-family: 'GTSuperDisplay-Regular', sans-serif;
-    height: 20px;
-    line-height: 20px;
+    line-height: 2em;
+    font-size: 1em;
     align-self: center;
 }
 
-.RegisterForm_form > input:focus-visible {
+.RegisterForm_input:focus-visible {
     outline: none;
 }
 
-.RegisterForm_form > p {
+.RegisterForm_hidden{
+    display: none;
+    margin: 0;
+}
+
+.RegisterForm_information{
+    display: inline
+}
+
+.RegisterForm_instructions {
     color: #4d4e55;
     font-family: 'GTSuperDisplay-Regular', sans-serif;
-    font-size: 14px
+    font-size: 1em;
+    margin: 0;
 }
 
 .RegisterForm_button {
     font-family: 'GTSuperDisplay-Regular', sans-serif;
     background-color: #4D4E55;
     color: #FFFFFF;
-    width: 100px;
-    height: 50px;
-    padding: 10px;
+    padding: 1em 2em;
 }
 
 .RegisterForm_button:hover {
@@ -83,67 +91,34 @@
     opacity: 50%;
 }
 
-.RegisterForm_hidden{
-    display: none
-}
-
-.RegisterForm_information{
-    display: inline
-}
-
-.RegisterForm_check{
-    display: inline,
-}
-
 .fa-check{
     color: green
-}
-
-.RegisterForm_times{
-    display: inline
 }
 
 .fa-xmark{
     color: red
 }
 
+.RegisterForm_text {
+    color: #4d4e55;
+    font-family: 'GTSuperDisplay-Regular', sans-serif; 
+}
+
 .RegisterForm_link {    
     cursor: pointer;
     text-decoration: underline;
-    color: #384558;
+    color: #7796a3;
 }
 
 
 @media screen and (max-width: 700px){
 
+.RegisterForm_container {
+    margin: 0 0 0 1em;
+}
+
 .RegisterForm_imageContainer {
-    display: none;
-}
-
-.RegisterForm_form {
-    grid-column: 1/3;
-}
-
-.RegisterForm_form > p {
-    font-size: 12px;
-}
-
-.RegisterForm_header {
-    font-size: 40px;
-}
-
-.RegisterForm_button {
-    width: 80px;
-    height: 30px;
-    padding: 5px;
-}
-
-}
-
-@media screen and (max-width: 700px) and (min-height: 800px){
-    
-.RegisterForm_header {
-    font-size: 50px;
+    background-position-x: 20%;
 }
 
 }

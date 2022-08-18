@@ -3,7 +3,6 @@ import { USER_REGEX, EMAIL_REGEX, PWD_REGEX } from '../../utils/regex';
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { RegisterFocus, RegisterInputs, RegisterValidChecks } from '../../utils/interfaces';
-import image from '../../assets/pexels-cottonbro-3298605.jpg';
 import './styles.css';
 
 interface Props {
@@ -90,7 +89,7 @@ const RegisterForm: React.FC<Props> = ({ renderConstants, setRender }) => {
         <div className={className}>
             <div className={`${className}_container`}>
                 <div className={`${className}_imageContainer`}>
-                    <img src={image} alt="cooking image" className={`${className}_image`} />
+                    <div className={`${className}_overlay`}></div>
                 </div>
                 <form onSubmit={handleSubmit} className={`${className}_form`}>
                     <h3 className={`${className}_header`}>Register</h3>
@@ -104,6 +103,7 @@ const RegisterForm: React.FC<Props> = ({ renderConstants, setRender }) => {
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                         required
+                        className={`${className}_input`}
                     />
                     <p className={focus.username && registerInputs.username && !registerValid.username ? `${className}_instructions` : `${className}_hidden`}>
                         <FontAwesomeIcon icon={faInfoCircle}/>
@@ -121,6 +121,7 @@ const RegisterForm: React.FC<Props> = ({ renderConstants, setRender }) => {
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                         required 
+                        className={`${className}_input`}
                     />
                     <p className={focus.email && registerInputs.email && !registerValid.email ? `${className}_instructions` : `${className}_hidden`}>
                         <FontAwesomeIcon icon={faInfoCircle}/>
@@ -135,6 +136,7 @@ const RegisterForm: React.FC<Props> = ({ renderConstants, setRender }) => {
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                         required
+                        className={`${className}_input`}
                     />
                     <p className={focus.password && !registerValid.password ? `${className}_instructions` : `${className}_hidden`}>
                         <FontAwesomeIcon icon={faInfoCircle}/>
@@ -150,19 +152,20 @@ const RegisterForm: React.FC<Props> = ({ renderConstants, setRender }) => {
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                         required
+                        className={`${className}_input`}
                     />
                     <p className={focus.confirmPW && !registerValid.confirmPW ? `${className}_instructions` : `${className}_hidden`}>
                         <FontAwesomeIcon icon={faInfoCircle}/>
                         Must match the first password input provided.
                     </p>
-                    <button 
-                        type='submit'
-                        className={`${className}_button`}
-                        disabled={!registerValid.username || !registerValid.email || !registerValid.password || !registerValid.confirmPW ? true : false} 
-                    >
-                        Sign Up
-                    </button>
-                    <p>
+                    <div className={`${className}_buttonContainer`}>
+                        <button 
+                            type='submit'
+                            className={`${className}_button`}
+                            disabled={!registerValid.username || !registerValid.email || !registerValid.password || !registerValid.confirmPW ? true : false} 
+                        >Sign Up</button>
+                    </div>
+                    <p className={`${className}_text`}>
                         Already registered?<br/>
                         <a className={`${className}_link`} onClick={goToLogin}>Sign In</a>
                     </p>

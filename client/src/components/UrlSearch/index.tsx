@@ -29,15 +29,15 @@ const UrlSearch: React.FC<Props> = ({ setVidSelected }) => {
             const data = await res.json();
             const newVideoState = {
                 title: data.items[0].snippet.title,
-                thumbnail: data.items[0].snippet.thumbnails.default,
+                thumbnail: data.items[0].snippet.thumbnails.medium,
                 channel: data.items[0].snippet.channelTitle,
                 videoId: data.items[0].id
             };
             setVidSelected(newVideoState);
         } catch (error) {
             console.log(error);
-        }
-    }
+        };
+    };
 
     const className = 'UrlSearch';
     return (
@@ -53,11 +53,12 @@ const UrlSearch: React.FC<Props> = ({ setVidSelected }) => {
                     placeholder='* Enter URL'
                     value={input}
                     onChange={handleChange}
-                    autoComplete='off' 
+                    autoComplete='off'
+                    className={`${className}_input`} 
                 />
-                <button type='submit'>Submit</button>
+                <button className={`${className}_button`} type='submit'>Submit</button>
             </form>
-            <span>{error}</span>
+            <span className={`${className}_error`}>{error}</span>
         </div>
     );
 };

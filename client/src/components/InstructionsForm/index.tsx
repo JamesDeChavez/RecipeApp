@@ -1,10 +1,11 @@
 import React from "react";
+import { Instruction } from "../../utils/interfaces";
 import InstructionsFormItem from "../InstructionsFormItem";
 import './styles.css';
 
 interface Props {
-    instructions: { text: string }[],
-    setInstructions: React.Dispatch<React.SetStateAction<{ text: string }[]>>,
+    instructions: Instruction[],
+    setInstructions: React.Dispatch<React.SetStateAction<Instruction[]>>,
     vidRef: React.MutableRefObject<any>
 };
 
@@ -12,7 +13,6 @@ const InstructionsForm: React.FC<Props> = ({ instructions, setInstructions, vidR
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>, idx: number) => {
         let newState = [...instructions];
-        newState[idx]['text'] = e.target.value;
         setInstructions(newState);
     };
 
@@ -27,17 +27,27 @@ const InstructionsForm: React.FC<Props> = ({ instructions, setInstructions, vidR
         e.preventDefault();
         vidRef.current!.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
         let newState = [...instructions];
-        newState.push({ text: '' });
         setInstructions(newState);
+        console.log(vidRef.current);
     };
 
     const className = 'InstructionsForm';
     return(
         <div className={className} >
-            <h4 className={`${className}_header`}>Instructions:</h4>
-            <ul className={`${className}_list`}>
-                <InstructionsFormItem />
-            </ul>
+            <div className={`${className}_topContainer`}>
+                <h4 className={vidRef.current !== undefined ? 
+                    `${className}_header`
+                :
+                    `${className}_header ${className}_novid`
+                }>Instructions:</h4>
+                <ul className={`${className}_list`}>
+                    <InstructionsFormItem vidExists={vidRef.current !== undefined}/>
+                </ul>
+            </div>
+            <div className={`${className}_bottomContainer`}>
+                <button onClick={addStep} className={`${className}_button`}>Add Step</button>
+            </div>
+
         </div>
     );
 };

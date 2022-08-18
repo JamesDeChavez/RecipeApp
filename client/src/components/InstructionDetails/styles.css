@@ -1,0 +1,85 @@
+.InstructionDetails {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr;
+    row-gap: .5em;
+    padding: 0 20px;
+    animation: slideRightToLeft .2s forwards;
+}
+
+.InstructionDetails_contentContainer {
+    display: grid;
+    grid-template-rows: 1fr 3fr 4fr;
+    row-gap: .5em;
+}
+
+.InstructionDetails_summTimeContainer,
+.InstructionDetails_descContainer,
+.InstructionDetails_ingredientsContainer {
+    background-color: #515a67;
+    display: flex;
+    padding: .5em;
+    border: solid 1px #888888;
+}
+
+.InstructionDetails_summTimeContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.InstructionDetails_summContainer,
+.InstructionDetails_timeContainer,
+.InstructionDetails_descContainer,
+.InstructionDetails_ingredientsContainer {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 1em;
+}
+
+.InstructionDetails_summContainer > .fa-note-sticky,
+.InstructionDetails_timeContainer > .fa-clock,
+.InstructionDetails_descContainer > .fa-file-lines,
+.InstructionDetails_ingredientsContainer > .fa-carrot {
+    color: #FFFFFF;
+}
+
+.InstructionDetails_detailsSummary,
+.InstructionDetails_detailsDescription,
+.InstructionDetails_detailsIngredients,
+.InstructionDetails_detailsTime,
+.InstructionDetails_backward {
+    margin: 0;
+    color: #FFFFFF;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+}
+
+.InstructionDetails_backward:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.InstructionDetails_listItemsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    row-gap: 10px;
+}
+
+/*WIDE VIEW*/
+
+.InstructionDetails_Wide {
+    /* grid-template-rows: min-content 14fr;
+    row-gap: 0; */
+}
+
+.InstructionDetails_listItemsContainer_Wide{
+    grid-template-columns: 1fr 1fr;
+}
+
+.InstructionDetails_contentContainer_Wide {
+    grid-template-rows: 1fr 5fr 8fr;
+    row-gap: .8em;
+}
+
+
+

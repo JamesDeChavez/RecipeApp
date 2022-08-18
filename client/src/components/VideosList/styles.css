@@ -1,15 +1,20 @@
 .videosList{
-    grid-column: 1/4;
     list-style-type: none;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-content: space-between;
+    grid-template-rows: min-content 1fr 9fr 1fr;
+    margin: 0;
+    padding: 0 1em;
+    text-align: left;
+    row-gap: .5em;
+    column-gap: .5em;
 }
 
 .videosList_backward {
     font-family: 'GTSuperDisplay-Regular', sans-serif;
     color: #4D4E55;
-    width: 70px;
+    grid-column: 1/5;
+    width: 20%;
 }
 
 .videosList_backward:hover {
@@ -17,49 +22,60 @@
     opacity: 50%;
 } 
 
-
 .videosList_header {
     grid-column: 1/5;
-    margin-top: 0;
+    margin: 0;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #4D4E55;
+}
+
+.videosList_videoContainer {
+    display: grid;
+    height: 100%;
+    width: 100%;
 }
 
 .videosList_listitem {
     font-family: 'GTAmerica-Light',sans-serif;
     display: grid;
+    grid-template-rows: min-content 1fr;
     overflow: hidden;
     animation: slideRightToLeft 0.5s forwards;
-}
-
-.videosList_listitem > img {
-    width: 90%;
-    height: auto;
-}
-
-.videosList_listitem > h5 {
-    margin: 5px 0 0 0;
-    height: 45px;
-    overflow: hidden;
-    width: 90%;
-}
-
-.videosList_listitem > p {
-    font-size: 12px;
-    width: 90%;
-}
-
-.videosList_listitem > button {
     font-family: 'GTSuperDisplay-Regular', sans-serif;
-    background-color: #4D4E55;
     color: #FFFFFF;
-    width: 70px;
-    padding: 5px;
-    align-self: flex-end;
-    margin-bottom: 10px;
+    background-color: #515a67;
+    height: 60%;
 }
 
-.videosList_listitem > button:hover {
+.videosList_listitem:hover {
     cursor: pointer;
     opacity: 50%;
+}
+
+.videosList_thumbnail {
+    width: 100%;
+    height: auto;
+    border: solid 1px #888888;
+}
+
+.videosList_textContainer {
+    display: grid;
+    padding: .5em;
+}
+
+.videosList_videoTitle {
+    margin: 0;
+    font-size: .9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.videosList_channel {
+    font-size: .8em;
+    margin: 0;
+    align-self: flex-end;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .videosList_pagination {
@@ -68,14 +84,16 @@
     align-items: center;
 }
 
-.fa-circle-left, .fa-circle-right {
+.videosList_pagination > .fa-circle-left, 
+.videosList_pagination > .fa-circle-right {
     color: #4D4E55;
     margin: 0 20px 0 0;
     width: 30px;
     height: auto;
 }
 
-.fa-circle-left:hover, .fa-circle-right:hover {
+.videosList_pagination > .fa-circle-left:hover, 
+.videosList_pagination > .fa-circle-right:hover {
     cursor: pointer;
     opacity: 50%;
 }
@@ -88,78 +106,34 @@
 @media screen and (max-width: 1000px){
 
 .videosList{
-    grid-template-columns: 1fr 1fr;
-}
-
-.videosList_header {
-    grid-column: 1/3;
-}
-
-.videosList_pagination {
-    grid-column: 1/3;
-}
-
-.videosList_listitem > img {
-    width: 60%;
-}
-
-.videosList_listitem > h5 {
-    height: 30px;
-}
-
-.videosList_listitem > p {
-    margin: 0;
-}
-
-}
-
-@media screen and (max-width: 600px){
-
-.videosList {
     grid-column: 1/2;
-    padding-left: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content repeat(4, 3fr) 1fr;
 }
 
+.videosList_backward,
 .videosList_header {
-    font-size: 12px;
+    grid-column: 1/2;
 }
 
-.videosList_listitem > img {
-    width: 60%;
+.videosList_listitem {
+    grid-template-columns: 3fr 7fr;
+    grid-template-rows: 1fr;
+    height: auto;
 }
 
-.videosList_listitem > h5 {
-    font-size: 12px;
-    height: 25px;
+.videosList_videoContainer {
+    width: 100%;
 }
 
-.videosList_listitem > p {
-    font-size: 10px;
-}
-
-.videosList_listitem > button {
-    font-size: 10px;
+.videosList_thumbnail {
+    width: 100%;
+    height: 100%;
 }
 
 .videosList_pagination {
-    font-size: 12px;
+    grid-column: 1/2;
 }
 
 }
 
-@media screen and (max-width: 600px) and (min-height: 800px){
-
-
-.videosList_listitem > img {
-    width: 90%;
-}
-
-}
-
-@media screen and (max-width: 1000px) and (min-height: 1000px){
-
-.videosList_listitem > img {
-    width: 90%;
-}
-
-}

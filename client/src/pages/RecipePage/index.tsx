@@ -1,30 +1,31 @@
 import React, { useState } from "react";
-import OrderIngredientsForm from "../../components/OrderIngredientsForm";
+import EditRecipeForm from "../../components/EditRecipeForm";
 import RecipeComponent from "../../components/RecipeComponent";
 import { Ingredient, Recipe } from "../../utils/interfaces";
 
 interface Props {
     recipe: Recipe,
-    setEditActive: React.Dispatch<React.SetStateAction<boolean>>
+    setRecipeSelected: React.Dispatch<React.SetStateAction<Recipe | undefined>>
 };
 
-const RecipePage: React.FC<Props> = ({ recipe, setEditActive }) => {
-    const [orderActive, setOrderActive] = useState(false);
-    const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+const RecipePage: React.FC<Props> = ({ recipe, setRecipeSelected }) => {
+    const [editActive, setEditActive] = useState(false);
 
     const className = 'RecipePage';
     return (
         <div className={className}>
-            <h3>Recipe Page</h3>
-            {!orderActive ?
+            {!editActive ?
                 <RecipeComponent 
                     recipe={recipe} 
-                    setEditActive={setEditActive} 
-                    setOrderActive={setOrderActive} 
-                    setIngredients={setIngredients}
+                    setEditActive={setEditActive}
+                    setRecipeSelected={setRecipeSelected}
+                    isSample={false}
                 />
             :
-                <OrderIngredientsForm />
+                <EditRecipeForm 
+                    recipe={recipe}
+                    setEditActive={setEditActive}
+                />
             }
         </div>
     );

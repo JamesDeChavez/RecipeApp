@@ -7,22 +7,21 @@ const mockIngredients = [
     {
         _id: '123',
         name: 'Green apples',
-        brand: 'Fresh'
-    },
-    {
-        _id: '124',
-        name: 'Strawberry greek yogurt',
-        brand: 'Chobani'
+        brand: 'Fresh',
+        amount: '5 lbs'
     },
     {
         _id: '125',
         name: 'Chicken breast',
-        brand: 'Fresh'
+        brand: 'Fresh',
+        amount: '2 lbs'
     },
     {
         _id: '126',
         name: 'Bananas',
-        brand: 'Dole'
+        brand: 'Dole',
+        amount: '2 lbs'
+
     }
 ];
 

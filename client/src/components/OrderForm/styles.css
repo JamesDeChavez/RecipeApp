@@ -1,0 +1,68 @@
+.OrderForm {
+    display: grid;
+    padding: .5em;
+    row-gap: 10px;
+    place-content: center;
+    text-align: center;
+    animation: slideLeftToRight .5s forwards;
+}
+
+.OrderForm_selectButtonsContainer,
+.OrderForm_orderButtonsContainer {
+    display: flex;
+    place-content: center;
+    column-gap: 10px;
+}
+
+.OrderForm_header{
+    margin: 0;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #384558;
+}
+
+.OrderForm_text {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #384558;
+}
+
+.OrderForm_greenText{
+    color: greenyellow;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #515a67,
+    -1px -1px 0 #515a67,
+    -1px 1px 0 #515a67,
+    1px -1px 0 #515a67;
+}
+
+.OrderForm_warning {
+    font-style: italic;
+    font-size: .9em;
+}
+
+.OrderForm_selectButton {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #384558;
+    border: solid 1px #384558;
+    padding: 5px;
+    background: none;
+}
+
+.OrderForm_selectButton:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.OrderForm_orderButton {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #FFFFFF;
+    background: linear-gradient(to left, #384558 50%, #7796a3 50%) right;
+    background-size: 201%;
+    transition: .5s ease-out;
+    padding: 10px;
+    border: none;
+}
+
+.OrderForm_orderButton:hover {
+    cursor: pointer;
+    background-position: left;
+}

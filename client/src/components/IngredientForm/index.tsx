@@ -9,7 +9,8 @@ interface Props {
 const IngredientForm: React.FC<Props> = ({ ingredient, setActive }) => {
     const [inputs, setInputs] = useState({
         name: ingredient ? ingredient.name : '',
-        brand: ingredient ? ingredient.brand : ''
+        brand: ingredient ? ingredient.brand : '',
+        amount: '2 lbs'
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,6 +23,7 @@ const IngredientForm: React.FC<Props> = ({ ingredient, setActive }) => {
         const ingredientData: Ingredient = {
             name: inputs.name,
             brand: inputs.brand,
+            amount: inputs.amount
         };
 
         if (ingredient) ingredientData._id = ingredient._id;

@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
-import Checkbox from "../Checkbox";
 import { Ingredient } from "../../utils/interfaces";
 
 const mockDB_Ingredients = [
     {
         _id: '123',
         name: 'Green apples',
-        brand: 'Fresh'
-    },
-    {
-        _id: '124',
-        name: 'Strawberry greek yogurt',
-        brand: 'Chobani'
+        brand: 'Fresh',
+        amount: '5 lbs'
     },
     {
         _id: '125',
         name: 'Chicken breast',
-        brand: 'Fresh'
+        brand: 'Fresh',
+        amount: '2 lbs'
     },
     {
         _id: '126',
         name: 'Bananas',
-        brand: 'Dole'
+        brand: 'Dole',
+        amount: '2 lbs'
+
     }
 ];
 
@@ -37,6 +35,7 @@ const OrderIngredientsForm: React.FC = () => {
             return {
                 name: ingredient.name,
                 brand: ingredient.brand,
+                amount: ingredient.amount,
                 include: true
             }
         });
@@ -70,12 +69,6 @@ const OrderIngredientsForm: React.FC = () => {
                     {ingredients.map(ingredient => {
                         return (
                             <li key={ingredient._id}  className={`${className}_listitem`}>
-                                <Checkbox 
-                                    name={ingredient.name}
-                                    id={ingredient._id!}
-                                    ingredients={ingredients}
-                                    setIngredients={setIngredients}
-                                />
                                 {ingredient.name}
                             </li>
                         )

@@ -1,0 +1,213 @@
+.InstructionModal {
+    width: 90%;
+    height: 50%;
+    background-color: #515a67;
+    border: solid 1px #888888;
+    margin: auto;
+    padding: .5em;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+}
+
+.InstructionModal_header {
+    margin: 0;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #FFFFFF;
+}
+
+.InstructionModal_form {
+    display: grid;
+    grid-template-rows: repeat(5, min-content) 1fr repeat(3, min-content);
+    row-gap: .5em;
+    padding: .5em;
+}
+
+.InstructionModal_label {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #FFFFFF;
+}
+
+.InstructionModal_addEditSelect {
+    background-color: #515a67;
+    color: #FFFFFF;
+    border: solid 1px #FFFFFF;
+    margin-left: .5em;
+}
+
+.InstructionModal_addEditSelect:hover {
+    cursor: pointer;
+}
+
+.InstructionModal_actionButton {
+    background-color: transparent;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #FFFFFF;
+    border: solid 1px #FFFFFF;
+    margin-right: .5em;
+}
+
+.InstructionModal_actionButton:hover {
+    cursor: pointer;
+    color: #7796a3;
+    border: solid 1px #7796a3;
+}
+
+.InstructionModal_actionButtonActive {
+    color: aqua;
+    border: solid 1px aqua;
+}
+
+.InstructionModal_actionButtonActive:hover {
+    cursor: pointer;
+    color: aqua;
+    border: solid 1px aqua;
+}
+
+.InstructionModal_itemInput {
+    border: none;
+    color: #FFFFFF;
+    border-bottom: solid 1px #FFFFFF;
+    background: transparent;
+    margin: 0 .5em;
+    font-size: 1em;
+}
+
+.InstructionModal_itemInput:focus-visible {
+    outline: none;
+}
+
+.InstructionModal_itemButton {
+    width: auto;
+    background-color: transparent;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #FFFFFF;
+    border: solid 1px #FFFFFF;
+}
+
+.InstructionModal_itemButton:hover {
+    cursor: pointer;
+    color: #7796a3;
+    border: solid 1px #7796a3;
+}
+
+.InstructionModal_summaryContainer {
+    margin: 0;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #FFFFFF;    
+}
+
+.InstructionModal_summaryText {
+    color: aqua;
+    margin-left: .5em;
+}
+
+.InstructionModal_timeInput {
+    border: none;
+    color: #FFFFFF;
+    border-bottom: solid 1px #FFFFFF;
+    background: transparent;
+    font-size: 1em;
+}
+
+.InstructionModal_timeSelect {
+    background-color: #515a67;
+    color: #FFFFFF;
+    border: solid 1px #FFFFFF;
+    margin-left: .5em;
+}
+
+.InstructionModal_timeSelect:hover {
+    cursor: pointer;
+}
+
+.InstructionModal_timeInput:focus-visible {
+    outline: none;
+}
+
+.InstructionModal_descriptionContainer {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    row-gap: .5em;
+}
+
+.InstructionModal_descriptionInput {
+    background-color: transparent;
+    border: solid 1px #FFFFFF;
+    color: #FFFFFF;
+    resize: none;
+    font-size: 1.2em;
+}
+
+.InstructionModal_descriptionInput:focus-visible {
+    outline: none;
+}
+
+.InstructionModal_ingredientNameInput,
+.InstructionModal_ingredientAmountInput {
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 1px #FFFFFF;
+    color: #FFFFFF;
+    width: auto;
+    margin-left: .5em;
+}
+
+.InstructionModal_ingredientNameInput::placeholder,
+.InstructionModal_ingredientAmountInput::placeholder {
+    color: #FFFFFF;
+}
+
+.InstructionModal_ingredientNameInput:focus-visible,
+.InstructionModal_ingredientAmountInput:focus-visible {
+    outline: none;
+}
+
+.InstructionModal_ingredientButton {
+    width: auto;
+    background-color: transparent;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #FFFFFF;
+    border: solid 1px #FFFFFF;
+    margin-left: .5em;
+}
+
+.InstructionModal_ingredientButton:hover {
+    cursor: pointer;
+    color: #7796a3;
+    border: solid 1px #7796a3;
+}
+
+.InstructionModal_ingredientsList {
+    display: flex;
+    column-gap: .5em;
+    list-style: none;
+    margin: 0;
+    padding: 0 .5em;
+}
+
+.InstructionModal_ingredientListItem {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: aqua;
+}
+
+.InstructionModal_formButtons {
+    display: flex;
+    column-gap: .5em;
+}
+
+.InstructionModal_formButton {
+    border: none;
+    padding: .5em;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #FFFFFF;
+    background: linear-gradient(to left, #384558 50%, #7796a3 50%) right;
+    background-size: 201%;
+    transition: .5s ease-out;
+    border: solid 1px #FFFFFF;
+}
+
+.InstructionModal_formButton:hover {
+    cursor: pointer;
+    background-position: left;
+}
+

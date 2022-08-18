@@ -4,7 +4,6 @@ import NoVidForm from "../NoVidForm";
 import UrlSearch from "../UrlSearch";
 import VideosList from "../VideosList";
 import YoutubeSearch from "../YoutubeSearch";
-import image from '../../assets/pexels-polina-tankilevitch-7669550-crop.jpg';
 import './styles.css'
 
 export interface Props {
@@ -18,13 +17,17 @@ const VideoSearch: React.FC<Props> = ({ setVidSelected }) => {
     return (
         <div className={className}>
             <div className={`${className}_container`}>
-                <div className={`${className}_imageContainer`}>
-                    <img className={`${className}_image`} src={image} alt="desk image" />
+                <div className={`
+                    ${className}_imageContainer
+                    ${videos.length ? `${className}_imageContainer_vidList` : ''}
+                `}>
+                    <div className={`${className}_overlay`}></div>
                 </div>
-                <div className={`${className}_rightContainer`}>
-                    <h4 className={`${className}_header`}>Video for Recipe</h4>
-
-                    
+                <div className={`
+                    ${className}_rightContainer
+                    ${videos.length ? `${className}_rightContainer_vidList` : ''}
+                `}>
+                    <h4 className={`${className}_header`}>Video for Recipe</h4>                    
                     {!videos.length ?
                     <>
                         <YoutubeSearch setVideos={setVideos} />
@@ -35,9 +38,7 @@ const VideoSearch: React.FC<Props> = ({ setVidSelected }) => {
                         <VideosList videos={videos} setVideos={setVideos} setVidSelected={setVidSelected} />
                     }             
                 </div>
-            </div>
-                
-        
+            </div>              
         </div>
     )
 }

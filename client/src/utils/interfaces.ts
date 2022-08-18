@@ -36,11 +36,30 @@ export interface LoginInputs{
     password: string
 }
 
+export interface Recipe {
+    _id?: string,
+    title: string,
+    video: Video,
+    ingredients: Ingredient[],
+    instructions: (Instruction)[]
+}
+
 export interface Ingredient {
     _id?: string,
     name: string,
-    brand: string,
+    brand?: string | undefined,
+    amount: string | undefined,
     include?: boolean
+}
+
+export interface Instruction {
+    summary: {
+        action: string,
+        items: string[]
+    },
+    description: string,
+    ingredients: Ingredient[],
+    time: string | null,
 }
 
 export interface Video {
@@ -49,13 +68,6 @@ export interface Video {
     thumbnail: string,
     channel: string,
     videoId: string
-}
-
-export interface Recipe {
-    title: string,
-    video: Video,
-    ingredients: string[],
-    instructions: string[]
 }
 
 export interface Profile {

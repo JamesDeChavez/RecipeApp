@@ -1,0 +1,58 @@
+.RecipeIngredients {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    row-gap: 1em;
+}
+
+.RecipeIngredients_ingredientsList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(8, 1fr);
+    grid-auto-flow: column;
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    row-gap: .5em;
+    column-gap: .5em;
+    animation: slideRightToLeft .5s forwards;
+}
+
+.RecipeIngredients_headerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.RecipeIngredients_ingredientsHeader {
+    grid-column: 1/3;
+    margin: 0;
+    color: #384558;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    text-decoration: underline;
+}
+
+.RecipeIngredients_switch {
+    color: #FFFFFF;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+}
+
+.RecipeIngredients_switch:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+/* WIDE VIEW */
+
+.RecipeIngredients_Wide {
+    grid-template-rows: 1fr 15fr;
+    row-gap: 0;
+}
+
+.RecipeIngredients_ingredientsList_Wide {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(13, 1fr);
+}
+
+.RecipeIngredients_ingredientsHeader_Wide {
+    color: #FFFFFF;
+}

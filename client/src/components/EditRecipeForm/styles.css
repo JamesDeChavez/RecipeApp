@@ -1,0 +1,112 @@
+.EditRecipeForm {
+    height: 100vh;
+    display: grid;
+    align-items: center;
+}
+
+.EditRecipeForm_container {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    height: calc(100vh - 160px);
+    column-gap: 1em;
+}
+
+.EditRecipeForm_plusButton {
+    display: none;
+    color: #FFFFFF;
+    animation: slideLeftToRight .5s forwards;
+    margin-left: 5px;
+}
+
+.EditRecipeForm_plusButton:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.EditRecipeForm_recipeLeftSection {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    box-shadow: 1px 1px 2px #888888;
+    border: solid 1px #888888;
+    border-left: none;
+    animation: slideLeftToRight .5s forwards;
+}
+
+.EditRecipeForm_recipeRightSection {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 1em;
+    position: relative;
+}
+
+.EditRecipeForm_instructionsContainer {
+    display: grid;
+}
+
+.EditRecipeForm_modal {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+.EditRecipeForm_ingredientModalContent,
+.EditRecipeForm_instructionModalContent {
+    width: 80%;
+    height: 80%;
+    background-color: blue;
+    margin: auto;
+}
+
+/*NO VID VIEW*/
+
+.EditRecipeForm_container_NoVid {
+    grid-template-columns: min-content 1fr;
+    animation: noVidShrink .5s forwards;
+}
+
+.EditRecipeForm_container_HideToDefault {
+    animation: hideToDefault .5s forwards;
+}
+
+.EditRecipeForm_recipeLeftSection_NoVid {
+    display: none;
+}
+
+.EditRecipeForm_plusButton_NoVid {
+    display: inherit;
+}
+
+/*WIDE VID VIEW*/
+
+.EditRecipeForm_container_Wide {
+    grid-template-columns: 6fr 4fr;
+    animation: wideViewGrow .5s forwards;
+}
+
+.EditRecipeForm_container_WideToDefault {
+    animation: wideToDefault .5s forwards;
+}
+
+.EditRecipeForm_container_WideToHide {
+    animation: wideToHide .5s forwards;
+}
+
+.EditRecipeForm_recipeLeftSection_Wide {
+    grid-template-rows: 1fr min-content;
+    border: none;
+    box-shadow: none;
+}
+
+.EditRecipeForm_recipeRightSection_Wide {
+    grid-template-rows: 1fr;
+}
+
+.EditRecipeForm_instructionsContainer_Wide,
+.EditRecipeForm_ingredientsContainer_Wide {
+    row-gap: 0;
+    max-height: none;
+}

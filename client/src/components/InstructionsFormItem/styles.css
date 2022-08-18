@@ -21,3 +21,20 @@
     cursor: pointer;
     opacity: 50%;
 }
+
+@media screen and (max-width: 1000px) {
+
+.InstructionsFormItem_step {
+    color: #4D4E55;
+}
+
+.InstructionsFormItem_iconContainer > .fa-pen-to-square, 
+.InstructionsFormItem_iconContainer > .fa-x {
+    color: #4D4E55;
+}
+
+.InstructionsFormItem_novid {
+    color: #FFFFFF !important;
+}
+
+}

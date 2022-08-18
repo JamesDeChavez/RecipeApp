@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Contents from "../../components/Contents";
-import CreateRecipe from "../CreateRecipe";
+import CreateRecipe from "../CreateRecipePage";
 import ViewRecipes from "../ViewRecipes";
 import Ingredients from "../Ingredients";
 import Profile from "../Profile";

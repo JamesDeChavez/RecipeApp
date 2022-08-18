@@ -1,55 +1,62 @@
 import React from "react";
 import { Ingredient } from "../../utils/interfaces";
+import ItemListItem from "../ItemListItem";
+import { faAnglesRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from "classnames";
+import './styles.css';
 
 interface Props {
-    ingredients: string[],
-    setOrderActive: React.Dispatch<React.SetStateAction<boolean>>,
-    setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>
+    ingredients: Ingredient[],
+    shoppingList?: Ingredient[],
+    wideViewActive: boolean,
+    wideToDefault: boolean,
+    orderIngredientsActive?: boolean,
+    switchList: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void,
+    setShoppingList?: React.Dispatch<React.SetStateAction<Ingredient[]>>
 };
 
-const mockIngredients = [
-    {
-        _id: '123',
-        name: 'Green apples',
-        brand: 'Fresh'
-    },
-    {
-        _id: '124',
-        name: 'Strawberry greek yogurt',
-        brand: 'Chobani'
-    },
-    {
-        _id: '125',
-        name: 'Chicken breast',
-        brand: 'Fresh'
-    },
-    {
-        _id: '126',
-        name: 'Bananas',
-        brand: 'Dole'
-    }
-];
-
-const RecipeIngredients: React.FC<Props> = ({ ingredients, setOrderActive, setIngredients }) => {
-
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault();
-        setIngredients(mockIngredients);
-        setOrderActive(prevState => !prevState);
-    };
+const RecipeIngredients: React.FC<Props> = ({ ingredients, shoppingList, wideViewActive, wideToDefault, orderIngredientsActive, switchList, setShoppingList }) => {
 
     const className = 'RecipeIngredients';
     return (
-        <div className={className}>
-            <h3>Ingredients:</h3>
-            <ul>
+        <div className={classNames(
+            className,
+            { [`${className}_Wide`]: wideViewActive }
+        )}>
+            <div className={`${className}_headerContainer`}>
+                <h4 className={classNames(
+                        `${className}_ingredientsHeader`,
+                        { [`${className}_ingredientsHeader_Wide`]: wideViewActive }
+                )}>Ingredients</h4>
+                <span 
+                    className={`${className}_switch`} 
+                    onClick={switchList}
+                    style={{display: wideViewActive ? 'inherit' : 'none'}}
+                >
+                    {`Go To Instructions `}
+                    <FontAwesomeIcon icon={faAnglesRight} />
+                </span>
+            </div>
+
+            <ul className={classNames(
+                `${className}_ingredientsList`,
+                { [`${className}_ingredientsList_Wide`]: wideViewActive }
+            )}>                        
                 {ingredients.map((item, index) => {
                     return (
-                        <li key={index}>{item}</li>
+                        <ItemListItem 
+                            item={item} 
+                            index={index}
+                            wideViewActive={wideViewActive}
+                            wideToDefault={wideToDefault}
+                            orderIngredientsActive={orderIngredientsActive}
+                            shoppingList={shoppingList}
+                            setShoppingList={setShoppingList}
+                            />
                     )
                 })}
             </ul>
-            <button onClick={handleClick}>Order Ingredients from Amazon Fresh</button>
         </div>
     );
 };

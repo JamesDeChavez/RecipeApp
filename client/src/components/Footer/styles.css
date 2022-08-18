@@ -11,6 +11,10 @@
     align-items: center;
     color:#FFFFFF;
     animation: slideLeftToRight 1s forwards;
+    border: solid 1px #888888;
+    border-bottom: none;
+    border-left: none;
+    box-shadow: 2px 2px 4px #888888;
 }
 
 .Footer_link, .Footer_link > a {

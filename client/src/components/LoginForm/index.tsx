@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { LoginInputs } from '../../utils/interfaces';
-import image from '../../assets/pexels-taryn-elliott-5107183.jpg';
 import './styles.css';
 
 interface Props {
@@ -36,12 +35,11 @@ const LoginForm: React.FC<Props> = ({ renderConstants, setRender }) => {
     };
 
     const className = 'LoginForm';
-
     return (
         <div className={className}>
             <div className={`${className}_container`}>
                 <div className={`${className}_imageContainer`}>
-                    <img src={image} alt="baking image" className={`${className}_img`} />
+                    <div className={`${className}_overlay`}></div>
                 </div>
                 <form onSubmit={handleSubmit} className={`${className}_form`}>
                     <h3 className={`${className}_header`}>Login</h3>
@@ -63,18 +61,17 @@ const LoginForm: React.FC<Props> = ({ renderConstants, setRender }) => {
                         onChange={handleChange}
                         className={`${className}_input`}
                         required
-                    />                
-                    <button 
-                        type='submit'
-                        className={`${className}_button`}
-                        disabled={!loginInputs.username || !loginInputs.password ? true : false} 
-                    >
-                        Sign In
-                    </button>
+                    />
+                    <div className={`${className}_buttonContainer`}>                
+                        <button 
+                            type='submit'
+                            className={`${className}_button`}
+                            disabled={!loginInputs.username || !loginInputs.password ? true : false} 
+                        >Sign In</button>
+                    </div>
                     <p className={`${className}_text`}>
                         Don't have an account?<br/>
-                        <a className={`${className}_link`} onClick={goToSignup}>Sign Up</a>
-                        
+                        <a className={`${className}_link`} onClick={goToSignup}>Sign Up</a>         
                     </p>
                 </form>
             </div>                

@@ -1,3 +1,9 @@
+.IngredientsForm {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+}
+
 .IngredientsForm_header {
     margin: 0 0 10px 0;
     color: #4d4e55;
@@ -6,4 +12,47 @@
 
 .IngredientsForm_list {
     padding: 0;
+}
+
+.IngredientsForm_rightContainer {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.IngredientsForm_button {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    background-color: #E97451;
+    color: #FFFFFF;
+    width: 100px;
+    height: 40px;
+    border: none;
+}
+
+.IngredientsForm_button:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+@media screen and (max-width: 700px) {
+
+.IngredientsForm_header {
+    color: #4D4E55;
+    margin: 0;
+}
+
+.IngredientsForm_button {
+    width: 100px;
+    height: 40px;
+}
+
+}
+
+@media screen and (max-height: 700px) and (min-width: 1000px) {
+
+.IngredientsForm_button {
+    width: 100px;
+    height: 30px;
+}
+
 }

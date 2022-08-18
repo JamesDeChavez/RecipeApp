@@ -3,10 +3,10 @@
     height: 80px;
     justify-content: space-between;
     background-color: #384558;
-    padding: 0 5%;
+    padding: 0;
     position: absolute;
     top: 0;
-    width: 90%;
+    width: 98%;
 }
 
 .NavbarNonAuth_logoContainer {
@@ -31,7 +31,7 @@
 .NavbarNonAuth_list {
     list-style-type: none;
     display: flex;   
-    justify-content: end;
+    justify-content: flex-end;
     column-gap: 20px;
     animation: slideRightToLeft 1s forwards;
 }

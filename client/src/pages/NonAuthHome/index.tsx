@@ -3,8 +3,9 @@ import Footer from "../../components/Footer";
 import Landing from "../../components/Landing";
 import LoginForm from "../../components/LoginForm";
 import NavbarNonAuth from "../../components/NavbarNonAuth";
+import RecipeComponent from "../../components/RecipeComponent";
 import RegisterForm from "../../components/RegisterForm";
-import Sample from "../../components/Sample";
+import { sampleRecipe as SR } from "../../utils/sampleRecipe";
 import './styles.css';
 
 interface Props {
@@ -19,23 +20,12 @@ const NonAuthHomePage: React.FC<Props> = ({ setAuth }) => {
     return (
         <div className={className}>
             <NavbarNonAuth renderConstants={RENDERS} setRender={setRender} setAuth={setAuth} />
-            {
-                {
-                    [RENDERS[0]]: <Landing 
-                        renderConstants={RENDERS} 
-                        setRender={setRender}
-                    />,
-                    [RENDERS[1]]: <LoginForm 
-                        renderConstants={RENDERS} 
-                        setRender={setRender}
-                    />,
-                    [RENDERS[2]]: <RegisterForm 
-                        renderConstants={RENDERS} 
-                        setRender={setRender}
-                    />,
-                    [RENDERS[3]]: <Sample/>
-                }[render]
-            }
+            {{
+                [RENDERS[0]]: <Landing renderConstants={RENDERS} setRender={setRender} />,
+                [RENDERS[1]]: <LoginForm renderConstants={RENDERS} setRender={setRender} />,
+                [RENDERS[2]]: <RegisterForm renderConstants={RENDERS} setRender={setRender} />,
+                [RENDERS[3]]: <RecipeComponent recipe={SR} isSample={true} RENDERS={RENDERS} setRender={setRender} />
+            }[render]}
             <Footer />
         </div>
     )

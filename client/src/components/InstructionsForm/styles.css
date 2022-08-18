@@ -1,3 +1,9 @@
+.InstructionsForm {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+}
+
 .InstructionsForm_header {
     margin: 0 0 10px 0;
     color: #FFFFFF;
@@ -6,4 +12,52 @@
 
 .InstructionsForm_list {
     padding: 0;
+}
+
+.InstructionsForm_button {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    background-color: #E97451;
+    color: #FFFFFF;
+    width: 100px;
+    height: 40px;
+    border: none;
+}
+
+.InstructionsForm_button:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+@media screen and (max-width: 1000px) {
+
+.InstructionsForm_header {
+    color: #4D4E55;
+}
+
+}
+
+@media screen and (max-width: 700px) {
+
+.InstructionsForm_header {
+    margin: 0;
+}
+
+.InstructionsForm_button {
+    width: 100px;
+    height: 40px;
+}
+
+.InstructionsForm_novid {
+    color: #FFFFFF !important;
+}
+
+}
+
+@media screen and (max-height: 700px) and (min-width: 1000px) {
+
+.InstructionsForm_button {
+    width: 100px;
+    height: 30px;
+}
+
 }
