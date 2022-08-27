@@ -1,7 +1,9 @@
+import ingredientController from "./ingredientController";
+import recipeController from "./recipeController";
 import userController from "./userController";
-import postController from "./postController";
 
 export default {
     User: userController,
-    Post: postController
+    Ingredient: ingredientController,
+    Recipe: recipeController
 }

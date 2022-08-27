@@ -1,82 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { LoginInputs } from '../../utils/interfaces';
-import './styles.css';
+import React from 'react';
+import { useLoginUserMutation } from '../../generated/graphql';
+import LoginForm from './LoginForm';
 
 interface Props {
     renderConstants: string[],
     setRender: React.Dispatch<React.SetStateAction<string>>
+    setUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
 };
 
-const LoginForm: React.FC<Props> = ({ renderConstants, setRender }) => {
-    const [loginInputs, setLoginInputs] = useState<LoginInputs>({
-        username: '',
-        password: ''
-    });
+const LoginFormContainer: React.FC<Props> = (props) => {
+    const [loginUser, { data, error, loading }] = useLoginUserMutation();
 
-    const [errMsg, setErrMsg] = useState('error');
+    if (loading) return <div>Loading...</div>;
+    if (error) console.log(error);
+    if (data) console.log('login successful');
 
-    useEffect(() => {
-        setErrMsg('');
-    }, [loginInputs]);
+    return <LoginForm loginUser={loginUser} {...props} />
+}
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        setLoginInputs((prevState) => ({ ...prevState, [e.target.id]: value }));
-    };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(loginInputs);
-    };
-
-    const goToSignup = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        e.preventDefault();
-        setRender(renderConstants[2]);
-    };
-
-    const className = 'LoginForm';
-    return (
-        <div className={className}>
-            <div className={`${className}_container`}>
-                <div className={`${className}_imageContainer`}>
-                    <div className={`${className}_overlay`}></div>
-                </div>
-                <form onSubmit={handleSubmit} className={`${className}_form`}>
-                    <h3 className={`${className}_header`}>Login</h3>
-                    <input 
-                        type='text'
-                        id='username'
-                        placeholder='* Username'
-                        autoComplete='off'
-                        value={loginInputs.username}
-                        onChange={handleChange}
-                        className={`${className}_input`}
-                        required
-                    />
-                    <input 
-                        type='password'
-                        id='password'
-                        placeholder='* Password'
-                        value={loginInputs.password}
-                        onChange={handleChange}
-                        className={`${className}_input`}
-                        required
-                    />
-                    <div className={`${className}_buttonContainer`}>                
-                        <button 
-                            type='submit'
-                            className={`${className}_button`}
-                            disabled={!loginInputs.username || !loginInputs.password ? true : false} 
-                        >Sign In</button>
-                    </div>
-                    <p className={`${className}_text`}>
-                        Don't have an account?<br/>
-                        <a className={`${className}_link`} onClick={goToSignup}>Sign Up</a>         
-                    </p>
-                </form>
-            </div>                
-        </div>
-    )
-};
-
-export default LoginForm;
+export default LoginFormContainer;

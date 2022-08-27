@@ -1,7 +1,9 @@
-import Post from './post';
+import Ingredient from './ingredient';
+import Recipe from './recipe';
 import User from './user';
 
 export default {
     User: User,
-    Post: Post
+    Recipe: Recipe,
+    Ingredient: Ingredient
 }

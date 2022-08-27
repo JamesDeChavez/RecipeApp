@@ -8,7 +8,7 @@ interface Props {
     instructions: Instruction[],
     instructionModalVisible: boolean,
     setInstructionModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
-    setInstructions: React.Dispatch<React.SetStateAction<Instruction[]>>
+    setInstructions: React.Dispatch<React.SetStateAction<Instruction[]>>,
 };
 
 const ACTIONS = ['COOK', 'ADD', 'PREP', 'BREAD'];

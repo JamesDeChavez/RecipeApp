@@ -1,0 +1,99 @@
+.Profile {
+    height: 100vh;
+    display: grid;
+    align-items: center;
+}
+
+.Profile_container {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    grid-template-rows: auto;
+    background-color: #F7F6F4;
+    margin-left: 10%;
+    height: 70vh;    
+    animation: slideRightToLeft 1s forwards;
+    overflow: hidden;
+    box-shadow: 2px 2px 4px #888888;
+    border: solid 1px #888888;
+}
+
+.Profile_imageContainer {    
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image: url('../../assets/pexels-markus-spiske-113845.jpg');
+    background-size: cover;
+}
+
+.Profile_overlay {
+    width: 100%;
+    height: 100%;
+    background-color: #384558;
+    opacity: 60%;
+}
+
+.Profile_rightContainer {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    padding: 1em;
+    row-gap: 1em;
+}
+
+.Profile_header {
+    font-size: 2em;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #4d4e55;
+    margin: 0;
+    text-align: center;
+}
+
+.Profile_profileList {
+    margin: 0;
+    padding: 0 2em;
+    list-style: none;
+    display: grid;
+    grid-template-rows: repeat(4, min-content);
+    row-gap: 1em;
+}
+
+.Profile_profileItem {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #4d4e55;
+}
+
+.Profile_label {
+    font-weight: bold;
+}
+
+.Profile_input {
+    border: none;
+    border-bottom: solid 1px #888888;
+    background: transparent;
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    color: #4d4e55;
+}
+
+.Profile_input:focus-within {
+    outline: none;
+}
+
+.Profile_buttonContainer {
+    display: flex;
+    place-content: center;
+    column-gap: 1em;
+}
+
+.Profile_button {
+    font-family: 'GTSuperDisplay-Regular', sans-serif;
+    background-color: #4D4E55;
+    color: #FFFFFF;
+    padding: 1em 1em;
+    border: none; 
+}
+
+.Profile_button:hover {
+    cursor: pointer;
+    opacity: 50%;
+}

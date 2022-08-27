@@ -1,7 +1,10 @@
 export interface User {
     _id?: string,
-    firstName: string,
-    lastName: string
+    username: string,
+    email: string,
+    password?: string,
+    recipes?: Recipe[],
+    ingredients?: Ingredient[]
 };
 
 export interface Post {
@@ -47,8 +50,9 @@ export interface Recipe {
 export interface Ingredient {
     _id?: string,
     name: string,
-    brand?: string | undefined,
-    amount: string | undefined,
+    brand?: string | null,
+    amount?: string | null,
+    userId?: string
     include?: boolean
 }
 

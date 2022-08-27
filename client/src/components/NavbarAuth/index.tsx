@@ -1,14 +1,17 @@
 import React from "react";
-import './styles.css';
+import { useApolloClient } from "@apollo/client";
 import image from '../../assets/inkpx-word-art.png';
+import './styles.css';
 
 interface Props {
     renderConstants: string[],
-    setRender: React.Dispatch<React.SetStateAction<string>>
-    setAuth: React.Dispatch<React.SetStateAction<boolean>>
+    setRender: React.Dispatch<React.SetStateAction<string>>,
+    setUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
 };
 
-const NavbarAuth: React.FC<Props> = ({ renderConstants, setRender, setAuth }) => {
+const NavbarAuth: React.FC<Props> = ({ renderConstants, setRender, setUserLoggedIn }) => {
+
+    const client = useApolloClient();
 
     const logoClick = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         e.preventDefault();
@@ -22,7 +25,9 @@ const NavbarAuth: React.FC<Props> = ({ renderConstants, setRender, setAuth }) =>
 
     const logout = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
         e.preventDefault();
-        setAuth(prevState => !prevState);
+        client.clearStore();
+        localStorage.clear();
+        setUserLoggedIn(false);
     };
 
     const className = 'NavbarAuth';

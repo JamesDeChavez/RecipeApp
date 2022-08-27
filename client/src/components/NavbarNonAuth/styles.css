@@ -30,21 +30,20 @@
 
 .NavbarNonAuth_list {
     list-style-type: none;
-    display: flex;   
-    justify-content: flex-end;
-    column-gap: 20px;
+    display: flex;
+    column-gap: .5em;
     animation: slideRightToLeft 1s forwards;
 }
 
 .NavbarNonAuth_listitem {
     display: flex;
     align-items: center;
-    padding: 10px;
     font-family: 'GTAmerica-Light',sans-serif;
     color: #FFFFFF;
     border: 1px solid #FFFFFF;
     text-transform: uppercase;
-    font-size: 10px;
+    font-size: .9em;
+    padding: .5em;
     background: linear-gradient(to left, #384558 50%, #7796a3 50%) right;
     background-size: 200%;
     transition: .5s ease-out;

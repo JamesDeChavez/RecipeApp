@@ -35,8 +35,8 @@
 .videoSearch_rightContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 4fr 6fr;
-    row-gap: 2em;
+    grid-template-rows: 3fr 7fr;
+    row-gap: 5em;
     background-color: #F7F6F4;
     height: 100%;
     width: 100%;

@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useViewerQuery } from "../../generated/graphql";
 import AuthHomePage from "../AuthHome";
 import NonAuthHomePage from "../NonAuthHome";
 
 const HomePage = () => {
-    const [auth, setAuth] = useState(false)
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
+    const {data, loading, error} = useViewerQuery();
+
+    useEffect(() => {
+        data && data.viewer && setUserLoggedIn(true);
+    }, [data])
 
     const className = 'HomePage';
     return (
         <div className={className}>
-            {!auth ?
-                <NonAuthHomePage setAuth={setAuth} />
+            {!userLoggedIn ?
+                <NonAuthHomePage setUserLoggedIn={setUserLoggedIn} />
             :
-                <AuthHomePage setAuth={setAuth} />
+                <AuthHomePage setUserLoggedIn={setUserLoggedIn} />
             }
             
         </div>

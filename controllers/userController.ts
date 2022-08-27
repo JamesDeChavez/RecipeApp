@@ -1,12 +1,12 @@
 import db from '../models';
 
 export default {
-    findAll: async () => {
+    login: async (req: any) => {
         try {
-            const request = await db.User.find();
-            return request;
+            const request = await db.User.find({username: req.username});
+            return request[0];
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     },
     findById: async (req: any) => {
@@ -22,7 +22,7 @@ export default {
             const request = await db.User.create(req);
             return request;
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     },
     update: async (req: any) => {
@@ -30,8 +30,8 @@ export default {
             const request = await db.User.findOneAndUpdate({
                 _id: req.id
             }, {
-                firstName: req.firstName,
-                lastName: req.lastName
+                username: req.username,
+                email: req.email
             }, {
                 new: true
             });
@@ -42,8 +42,7 @@ export default {
     },
     delete: async (req: any) => {
         try {
-            const userToDelete = await db.User.findById({ _id: req.id });
-            const request = await userToDelete?.remove();
+            const request = await db.User.findOneAndDelete({ _id: req.id });
             return request;
         } catch (error) {
             console.log(error);

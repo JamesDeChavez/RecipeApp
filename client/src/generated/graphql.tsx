@@ -15,30 +15,84 @@ export type Scalars = {
   Float: number;
 };
 
+export type Ingredient = {
+  __typename?: 'Ingredient';
+  _id?: Maybe<Scalars['String']>;
+  brand?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  userId?: Maybe<Scalars['ID']>;
+};
+
+export type IngredientForInstruction = {
+  __typename?: 'IngredientForInstruction';
+  amount?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type IngredientForStep = {
+  amount?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type Instruction = {
+  __typename?: 'Instruction';
+  description?: Maybe<Scalars['String']>;
+  ingredients?: Maybe<Array<Maybe<IngredientForInstruction>>>;
+  summary?: Maybe<Summary>;
+  time?: Maybe<Scalars['String']>;
+};
+
+export type InstructionInput = {
+  description?: InputMaybe<Scalars['String']>;
+  ingredients?: InputMaybe<Array<InputMaybe<IngredientForStep>>>;
+  summary?: InputMaybe<SummaryForStep>;
+  time?: InputMaybe<Scalars['String']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
-  createPost?: Maybe<Post>;
+  createIngredient?: Maybe<Ingredient>;
+  createRecipe?: Maybe<Recipe>;
   createUser?: Maybe<User>;
-  deletePost?: Maybe<Post>;
+  deleteIngredient?: Maybe<Ingredient>;
+  deleteRecipe?: Maybe<Recipe>;
   deleteUser?: Maybe<User>;
-  updatePost?: Maybe<Post>;
+  loginUser?: Maybe<User>;
+  updateIngredient?: Maybe<Ingredient>;
+  updateRecipe?: Maybe<Recipe>;
   updateUser?: Maybe<User>;
 };
 
 
-export type MutationCreatePostArgs = {
-  authorId?: InputMaybe<Scalars['ID']>;
-  body?: InputMaybe<Scalars['String']>;
+export type MutationCreateIngredientArgs = {
+  brand?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  userId?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type MutationCreateRecipeArgs = {
+  ingredients?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  instructions?: InputMaybe<Array<InputMaybe<InstructionInput>>>;
+  title?: InputMaybe<Scalars['String']>;
+  userId?: InputMaybe<Scalars['ID']>;
+  video?: InputMaybe<VideoInput>;
 };
 
 
 export type MutationCreateUserArgs = {
-  firstName?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']>;
+  username?: InputMaybe<Scalars['String']>;
 };
 
 
-export type MutationDeletePostArgs = {
+export type MutationDeleteIngredientArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type MutationDeleteRecipeArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
@@ -48,36 +102,49 @@ export type MutationDeleteUserArgs = {
 };
 
 
-export type MutationUpdatePostArgs = {
-  authorId?: InputMaybe<Scalars['ID']>;
-  body?: InputMaybe<Scalars['String']>;
+export type MutationLoginUserArgs = {
+  password?: InputMaybe<Scalars['String']>;
+  username?: InputMaybe<Scalars['String']>;
+};
+
+
+export type MutationUpdateIngredientArgs = {
+  brand?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+
+export type MutationUpdateRecipeArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  ingredients?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  instructions?: InputMaybe<Array<InputMaybe<InstructionInput>>>;
+  title?: InputMaybe<Scalars['String']>;
+  video?: InputMaybe<VideoInput>;
 };
 
 
 export type MutationUpdateUserArgs = {
-  firstName?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
-  lastName?: InputMaybe<Scalars['String']>;
-};
-
-export type Post = {
-  __typename?: 'Post';
-  _id?: Maybe<Scalars['ID']>;
-  authorId?: Maybe<Scalars['String']>;
-  body?: Maybe<Scalars['String']>;
+  username?: InputMaybe<Scalars['String']>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  getAllPosts?: Maybe<Array<Maybe<Post>>>;
-  getAllUsers?: Maybe<Array<Maybe<User>>>;
-  getPostById?: Maybe<Post>;
+  getIngredientById?: Maybe<Ingredient>;
+  getRecipeById?: Maybe<Recipe>;
   getUserById?: Maybe<User>;
+  viewer?: Maybe<User>;
 };
 
 
-export type QueryGetPostByIdArgs = {
+export type QueryGetIngredientByIdArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryGetRecipeByIdArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
@@ -86,223 +153,321 @@ export type QueryGetUserByIdArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
+export type Recipe = {
+  __typename?: 'Recipe';
+  _id?: Maybe<Scalars['ID']>;
+  ingredients?: Maybe<Array<Maybe<Ingredient>>>;
+  instructions?: Maybe<Array<Maybe<Instruction>>>;
+  title?: Maybe<Scalars['String']>;
+  userId?: Maybe<Scalars['ID']>;
+  video?: Maybe<Video>;
+};
+
+export type Summary = {
+  __typename?: 'Summary';
+  action?: Maybe<Scalars['String']>;
+  items?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SummaryForStep = {
+  action?: InputMaybe<Scalars['String']>;
+  items?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
 export type User = {
   __typename?: 'User';
   _id?: Maybe<Scalars['ID']>;
-  firstName?: Maybe<Scalars['String']>;
-  lastName?: Maybe<Scalars['String']>;
-  posts?: Maybe<Array<Maybe<Post>>>;
+  email?: Maybe<Scalars['String']>;
+  ingredients?: Maybe<Array<Maybe<Ingredient>>>;
+  password?: Maybe<Scalars['String']>;
+  recipes?: Maybe<Array<Maybe<Recipe>>>;
+  token?: Maybe<Scalars['String']>;
+  username?: Maybe<Scalars['String']>;
 };
 
-export type CreatePostMutationVariables = Exact<{
-  body?: InputMaybe<Scalars['String']>;
-  authorId?: InputMaybe<Scalars['ID']>;
+export type Video = {
+  __typename?: 'Video';
+  channel?: Maybe<Scalars['String']>;
+  thumbnail?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  youtubeId?: Maybe<Scalars['String']>;
+};
+
+export type VideoInput = {
+  channel?: InputMaybe<Scalars['String']>;
+  thumbnail?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']>;
+  youtubeId?: InputMaybe<Scalars['String']>;
+};
+
+export type Create_IngredientMutationVariables = Exact<{
+  name?: InputMaybe<Scalars['String']>;
+  brand?: InputMaybe<Scalars['String']>;
+  userId?: InputMaybe<Scalars['ID']>;
 }>;
 
 
-export type CreatePostMutation = { __typename?: 'Mutation', createPost?: { __typename?: 'Post', _id?: string | null, body?: string | null, authorId?: string | null } | null };
+export type Create_IngredientMutation = { __typename?: 'Mutation', createIngredient?: { __typename?: 'Ingredient', _id?: string | null, name?: string | null, brand?: string | null } | null };
 
-export type UpdatePostMutationVariables = Exact<{
-  updatePostId?: InputMaybe<Scalars['ID']>;
-  body?: InputMaybe<Scalars['String']>;
-  authorId?: InputMaybe<Scalars['ID']>;
+export type UpdateIngredientMutationVariables = Exact<{
+  updateIngredientId?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  brand?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type UpdatePostMutation = { __typename?: 'Mutation', updatePost?: { __typename?: 'Post', _id?: string | null, body?: string | null, authorId?: string | null } | null };
+export type UpdateIngredientMutation = { __typename?: 'Mutation', updateIngredient?: { __typename?: 'Ingredient', name?: string | null, brand?: string | null } | null };
 
-export type DeletePostMutationVariables = Exact<{
-  deletePostId?: InputMaybe<Scalars['ID']>;
+export type DeleteIngredientMutationVariables = Exact<{
+  deleteIngredientId?: InputMaybe<Scalars['ID']>;
 }>;
 
 
-export type DeletePostMutation = { __typename?: 'Mutation', deletePost?: { __typename?: 'Post', _id?: string | null, body?: string | null, authorId?: string | null } | null };
+export type DeleteIngredientMutation = { __typename?: 'Mutation', deleteIngredient?: { __typename?: 'Ingredient', _id?: string | null, name?: string | null } | null };
 
-export type GetAllPostsQueryVariables = Exact<{ [key: string]: never; }>;
+export type LoginUserMutationVariables = Exact<{
+  username?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']>;
+}>;
 
 
-export type GetAllPostsQuery = { __typename?: 'Query', getAllPosts?: Array<{ __typename?: 'Post', _id?: string | null, body?: string | null, authorId?: string | null } | null> | null };
+export type LoginUserMutation = { __typename?: 'Mutation', loginUser?: { __typename?: 'User', _id?: string | null, username?: string | null, email?: string | null, token?: string | null, ingredients?: Array<{ __typename?: 'Ingredient', _id?: string | null, name?: string | null, brand?: string | null, userId?: string | null } | null> | null, recipes?: Array<{ __typename?: 'Recipe', _id?: string | null, title?: string | null, userId?: string | null, video?: { __typename?: 'Video', title?: string | null, thumbnail?: string | null, channel?: string | null, youtubeId?: string | null } | null, ingredients?: Array<{ __typename?: 'Ingredient', _id?: string | null, name?: string | null, brand?: string | null, userId?: string | null } | null> | null, instructions?: Array<{ __typename?: 'Instruction', description?: string | null, time?: string | null, summary?: { __typename?: 'Summary', action?: string | null, items?: Array<string | null> | null } | null, ingredients?: Array<{ __typename?: 'IngredientForInstruction', name?: string | null, amount?: string | null } | null> | null } | null> | null } | null> | null } | null };
 
 export type CreateUserMutationVariables = Exact<{
-  firstName?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
+  username?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type CreateUserMutation = { __typename?: 'Mutation', createUser?: { __typename?: 'User', _id?: string | null, firstName?: string | null, lastName?: string | null } | null };
+export type CreateUserMutation = { __typename?: 'Mutation', createUser?: { __typename?: 'User', _id?: string | null, username?: string | null, email?: string | null, token?: string | null, ingredients?: Array<{ __typename?: 'Ingredient', _id?: string | null, name?: string | null, brand?: string | null, userId?: string | null } | null> | null, recipes?: Array<{ __typename?: 'Recipe', _id?: string | null, title?: string | null, video?: { __typename?: 'Video', title?: string | null, thumbnail?: string | null, channel?: string | null, youtubeId?: string | null } | null, ingredients?: Array<{ __typename?: 'Ingredient', _id?: string | null, name?: string | null, brand?: string | null, userId?: string | null } | null> | null, instructions?: Array<{ __typename?: 'Instruction', description?: string | null, time?: string | null, summary?: { __typename?: 'Summary', action?: string | null, items?: Array<string | null> | null } | null, ingredients?: Array<{ __typename?: 'IngredientForInstruction', name?: string | null, amount?: string | null } | null> | null } | null> | null } | null> | null } | null };
 
-export type UpdateUserMutationVariables = Exact<{
-  updateUserId?: InputMaybe<Scalars['ID']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  lastName?: InputMaybe<Scalars['String']>;
-}>;
+export type ViewerQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type UpdateUserMutation = { __typename?: 'Mutation', updateUser?: { __typename?: 'User', _id?: string | null, firstName?: string | null, lastName?: string | null } | null };
-
-export type DeleteUserMutationVariables = Exact<{
-  deleteUserId?: InputMaybe<Scalars['ID']>;
-}>;
+export type ViewerQuery = { __typename?: 'Query', viewer?: { __typename?: 'User', _id?: string | null, username?: string | null, email?: string | null, ingredients?: Array<{ __typename?: 'Ingredient', _id?: string | null, name?: string | null, brand?: string | null } | null> | null, recipes?: Array<{ __typename?: 'Recipe', _id?: string | null, title?: string | null, video?: { __typename?: 'Video', title?: string | null, thumbnail?: string | null, channel?: string | null, youtubeId?: string | null } | null, ingredients?: Array<{ __typename?: 'Ingredient', _id?: string | null, name?: string | null, brand?: string | null } | null> | null, instructions?: Array<{ __typename?: 'Instruction', description?: string | null, time?: string | null, summary?: { __typename?: 'Summary', action?: string | null, items?: Array<string | null> | null } | null, ingredients?: Array<{ __typename?: 'IngredientForInstruction', name?: string | null, amount?: string | null } | null> | null } | null> | null } | null> | null } | null };
 
 
-export type DeleteUserMutation = { __typename?: 'Mutation', deleteUser?: { __typename?: 'User', _id?: string | null, firstName?: string | null, lastName?: string | null } | null };
-
-export type GetAllUsersQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllUsersQuery = { __typename?: 'Query', getAllUsers?: Array<{ __typename?: 'User', _id?: string | null, firstName?: string | null, lastName?: string | null } | null> | null };
-
-
-export const CreatePostDocument = gql`
-    mutation CreatePost($body: String, $authorId: ID) {
-  createPost(body: $body, authorId: $authorId) {
+export const Create_IngredientDocument = gql`
+    mutation CREATE_INGREDIENT($name: String, $brand: String, $userId: ID) {
+  createIngredient(name: $name, brand: $brand, userId: $userId) {
     _id
-    body
-    authorId
+    name
+    brand
   }
 }
     `;
-export type CreatePostMutationFn = Apollo.MutationFunction<CreatePostMutation, CreatePostMutationVariables>;
+export type Create_IngredientMutationFn = Apollo.MutationFunction<Create_IngredientMutation, Create_IngredientMutationVariables>;
 
 /**
- * __useCreatePostMutation__
+ * __useCreate_IngredientMutation__
  *
- * To run a mutation, you first call `useCreatePostMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreatePostMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useCreate_IngredientMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreate_IngredientMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createPostMutation, { data, loading, error }] = useCreatePostMutation({
+ * const [createIngredientMutation, { data, loading, error }] = useCreate_IngredientMutation({
  *   variables: {
- *      body: // value for 'body'
- *      authorId: // value for 'authorId'
+ *      name: // value for 'name'
+ *      brand: // value for 'brand'
+ *      userId: // value for 'userId'
  *   },
  * });
  */
-export function useCreatePostMutation(baseOptions?: Apollo.MutationHookOptions<CreatePostMutation, CreatePostMutationVariables>) {
+export function useCreate_IngredientMutation(baseOptions?: Apollo.MutationHookOptions<Create_IngredientMutation, Create_IngredientMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreatePostMutation, CreatePostMutationVariables>(CreatePostDocument, options);
+        return Apollo.useMutation<Create_IngredientMutation, Create_IngredientMutationVariables>(Create_IngredientDocument, options);
       }
-export type CreatePostMutationHookResult = ReturnType<typeof useCreatePostMutation>;
-export type CreatePostMutationResult = Apollo.MutationResult<CreatePostMutation>;
-export type CreatePostMutationOptions = Apollo.BaseMutationOptions<CreatePostMutation, CreatePostMutationVariables>;
-export const UpdatePostDocument = gql`
-    mutation UpdatePost($updatePostId: ID, $body: String, $authorId: ID) {
-  updatePost(id: $updatePostId, body: $body, authorId: $authorId) {
-    _id
-    body
-    authorId
+export type Create_IngredientMutationHookResult = ReturnType<typeof useCreate_IngredientMutation>;
+export type Create_IngredientMutationResult = Apollo.MutationResult<Create_IngredientMutation>;
+export type Create_IngredientMutationOptions = Apollo.BaseMutationOptions<Create_IngredientMutation, Create_IngredientMutationVariables>;
+export const UpdateIngredientDocument = gql`
+    mutation UpdateIngredient($updateIngredientId: ID, $name: String, $brand: String) {
+  updateIngredient(id: $updateIngredientId, name: $name, brand: $brand) {
+    name
+    brand
   }
 }
     `;
-export type UpdatePostMutationFn = Apollo.MutationFunction<UpdatePostMutation, UpdatePostMutationVariables>;
+export type UpdateIngredientMutationFn = Apollo.MutationFunction<UpdateIngredientMutation, UpdateIngredientMutationVariables>;
 
 /**
- * __useUpdatePostMutation__
+ * __useUpdateIngredientMutation__
  *
- * To run a mutation, you first call `useUpdatePostMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdatePostMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useUpdateIngredientMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateIngredientMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [updatePostMutation, { data, loading, error }] = useUpdatePostMutation({
+ * const [updateIngredientMutation, { data, loading, error }] = useUpdateIngredientMutation({
  *   variables: {
- *      updatePostId: // value for 'updatePostId'
- *      body: // value for 'body'
- *      authorId: // value for 'authorId'
+ *      updateIngredientId: // value for 'updateIngredientId'
+ *      name: // value for 'name'
+ *      brand: // value for 'brand'
  *   },
  * });
  */
-export function useUpdatePostMutation(baseOptions?: Apollo.MutationHookOptions<UpdatePostMutation, UpdatePostMutationVariables>) {
+export function useUpdateIngredientMutation(baseOptions?: Apollo.MutationHookOptions<UpdateIngredientMutation, UpdateIngredientMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdatePostMutation, UpdatePostMutationVariables>(UpdatePostDocument, options);
+        return Apollo.useMutation<UpdateIngredientMutation, UpdateIngredientMutationVariables>(UpdateIngredientDocument, options);
       }
-export type UpdatePostMutationHookResult = ReturnType<typeof useUpdatePostMutation>;
-export type UpdatePostMutationResult = Apollo.MutationResult<UpdatePostMutation>;
-export type UpdatePostMutationOptions = Apollo.BaseMutationOptions<UpdatePostMutation, UpdatePostMutationVariables>;
-export const DeletePostDocument = gql`
-    mutation DeletePost($deletePostId: ID) {
-  deletePost(id: $deletePostId) {
+export type UpdateIngredientMutationHookResult = ReturnType<typeof useUpdateIngredientMutation>;
+export type UpdateIngredientMutationResult = Apollo.MutationResult<UpdateIngredientMutation>;
+export type UpdateIngredientMutationOptions = Apollo.BaseMutationOptions<UpdateIngredientMutation, UpdateIngredientMutationVariables>;
+export const DeleteIngredientDocument = gql`
+    mutation DeleteIngredient($deleteIngredientId: ID) {
+  deleteIngredient(id: $deleteIngredientId) {
     _id
-    body
-    authorId
+    name
   }
 }
     `;
-export type DeletePostMutationFn = Apollo.MutationFunction<DeletePostMutation, DeletePostMutationVariables>;
+export type DeleteIngredientMutationFn = Apollo.MutationFunction<DeleteIngredientMutation, DeleteIngredientMutationVariables>;
 
 /**
- * __useDeletePostMutation__
+ * __useDeleteIngredientMutation__
  *
- * To run a mutation, you first call `useDeletePostMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeletePostMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useDeleteIngredientMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteIngredientMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [deletePostMutation, { data, loading, error }] = useDeletePostMutation({
+ * const [deleteIngredientMutation, { data, loading, error }] = useDeleteIngredientMutation({
  *   variables: {
- *      deletePostId: // value for 'deletePostId'
+ *      deleteIngredientId: // value for 'deleteIngredientId'
  *   },
  * });
  */
-export function useDeletePostMutation(baseOptions?: Apollo.MutationHookOptions<DeletePostMutation, DeletePostMutationVariables>) {
+export function useDeleteIngredientMutation(baseOptions?: Apollo.MutationHookOptions<DeleteIngredientMutation, DeleteIngredientMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<DeletePostMutation, DeletePostMutationVariables>(DeletePostDocument, options);
+        return Apollo.useMutation<DeleteIngredientMutation, DeleteIngredientMutationVariables>(DeleteIngredientDocument, options);
       }
-export type DeletePostMutationHookResult = ReturnType<typeof useDeletePostMutation>;
-export type DeletePostMutationResult = Apollo.MutationResult<DeletePostMutation>;
-export type DeletePostMutationOptions = Apollo.BaseMutationOptions<DeletePostMutation, DeletePostMutationVariables>;
-export const GetAllPostsDocument = gql`
-    query GetAllPosts {
-  getAllPosts {
+export type DeleteIngredientMutationHookResult = ReturnType<typeof useDeleteIngredientMutation>;
+export type DeleteIngredientMutationResult = Apollo.MutationResult<DeleteIngredientMutation>;
+export type DeleteIngredientMutationOptions = Apollo.BaseMutationOptions<DeleteIngredientMutation, DeleteIngredientMutationVariables>;
+export const LoginUserDocument = gql`
+    mutation LoginUser($username: String, $password: String) {
+  loginUser(username: $username, password: $password) {
     _id
-    body
-    authorId
-  }
-}
-    `;
-
-/**
- * __useGetAllPostsQuery__
- *
- * To run a query within a React component, call `useGetAllPostsQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetAllPostsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetAllPostsQuery(baseOptions?: Apollo.QueryHookOptions<GetAllPostsQuery, GetAllPostsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAllPostsQuery, GetAllPostsQueryVariables>(GetAllPostsDocument, options);
+    username
+    email
+    ingredients {
+      _id
+      name
+      brand
+      userId
+    }
+    recipes {
+      _id
+      title
+      video {
+        title
+        thumbnail
+        channel
+        youtubeId
       }
-export function useGetAllPostsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllPostsQuery, GetAllPostsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAllPostsQuery, GetAllPostsQueryVariables>(GetAllPostsDocument, options);
+      ingredients {
+        _id
+        name
+        brand
+        userId
+      }
+      instructions {
+        summary {
+          action
+          items
         }
-export type GetAllPostsQueryHookResult = ReturnType<typeof useGetAllPostsQuery>;
-export type GetAllPostsLazyQueryHookResult = ReturnType<typeof useGetAllPostsLazyQuery>;
-export type GetAllPostsQueryResult = Apollo.QueryResult<GetAllPostsQuery, GetAllPostsQueryVariables>;
+        description
+        ingredients {
+          name
+          amount
+        }
+        time
+      }
+      userId
+    }
+    token
+  }
+}
+    `;
+export type LoginUserMutationFn = Apollo.MutationFunction<LoginUserMutation, LoginUserMutationVariables>;
+
+/**
+ * __useLoginUserMutation__
+ *
+ * To run a mutation, you first call `useLoginUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLoginUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [loginUserMutation, { data, loading, error }] = useLoginUserMutation({
+ *   variables: {
+ *      username: // value for 'username'
+ *      password: // value for 'password'
+ *   },
+ * });
+ */
+export function useLoginUserMutation(baseOptions?: Apollo.MutationHookOptions<LoginUserMutation, LoginUserMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<LoginUserMutation, LoginUserMutationVariables>(LoginUserDocument, options);
+      }
+export type LoginUserMutationHookResult = ReturnType<typeof useLoginUserMutation>;
+export type LoginUserMutationResult = Apollo.MutationResult<LoginUserMutation>;
+export type LoginUserMutationOptions = Apollo.BaseMutationOptions<LoginUserMutation, LoginUserMutationVariables>;
 export const CreateUserDocument = gql`
-    mutation CreateUser($firstName: String, $lastName: String) {
-  createUser(firstName: $firstName, lastName: $lastName) {
+    mutation CreateUser($username: String, $email: String, $password: String) {
+  createUser(username: $username, email: $email, password: $password) {
     _id
-    firstName
-    lastName
+    username
+    email
+    ingredients {
+      _id
+      name
+      brand
+      userId
+    }
+    token
+    recipes {
+      _id
+      title
+      video {
+        title
+        thumbnail
+        channel
+        youtubeId
+      }
+      ingredients {
+        _id
+        name
+        brand
+        userId
+      }
+      instructions {
+        summary {
+          action
+          items
+        }
+        description
+        ingredients {
+          name
+          amount
+        }
+        time
+      }
+    }
   }
 }
     `;
@@ -321,8 +486,9 @@ export type CreateUserMutationFn = Apollo.MutationFunction<CreateUserMutation, C
  * @example
  * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
  *   variables: {
- *      firstName: // value for 'firstName'
- *      lastName: // value for 'lastName'
+ *      username: // value for 'username'
+ *      email: // value for 'email'
+ *      password: // value for 'password'
  *   },
  * });
  */
@@ -333,111 +499,71 @@ export function useCreateUserMutation(baseOptions?: Apollo.MutationHookOptions<C
 export type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
 export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>;
 export type CreateUserMutationOptions = Apollo.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
-export const UpdateUserDocument = gql`
-    mutation UpdateUser($updateUserId: ID, $firstName: String, $lastName: String) {
-  updateUser(id: $updateUserId, firstName: $firstName, lastName: $lastName) {
+export const ViewerDocument = gql`
+    query Viewer {
+  viewer {
     _id
-    firstName
-    lastName
-  }
-}
-    `;
-export type UpdateUserMutationFn = Apollo.MutationFunction<UpdateUserMutation, UpdateUserMutationVariables>;
-
-/**
- * __useUpdateUserMutation__
- *
- * To run a mutation, you first call `useUpdateUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateUserMutation, { data, loading, error }] = useUpdateUserMutation({
- *   variables: {
- *      updateUserId: // value for 'updateUserId'
- *      firstName: // value for 'firstName'
- *      lastName: // value for 'lastName'
- *   },
- * });
- */
-export function useUpdateUserMutation(baseOptions?: Apollo.MutationHookOptions<UpdateUserMutation, UpdateUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(UpdateUserDocument, options);
+    username
+    email
+    ingredients {
+      _id
+      name
+      brand
+    }
+    recipes {
+      _id
+      title
+      video {
+        title
+        thumbnail
+        channel
+        youtubeId
       }
-export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>;
-export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>;
-export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<UpdateUserMutation, UpdateUserMutationVariables>;
-export const DeleteUserDocument = gql`
-    mutation DeleteUser($deleteUserId: ID) {
-  deleteUser(id: $deleteUserId) {
-    _id
-    firstName
-    lastName
-  }
-}
-    `;
-export type DeleteUserMutationFn = Apollo.MutationFunction<DeleteUserMutation, DeleteUserMutationVariables>;
-
-/**
- * __useDeleteUserMutation__
- *
- * To run a mutation, you first call `useDeleteUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useDeleteUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [deleteUserMutation, { data, loading, error }] = useDeleteUserMutation({
- *   variables: {
- *      deleteUserId: // value for 'deleteUserId'
- *   },
- * });
- */
-export function useDeleteUserMutation(baseOptions?: Apollo.MutationHookOptions<DeleteUserMutation, DeleteUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<DeleteUserMutation, DeleteUserMutationVariables>(DeleteUserDocument, options);
+      ingredients {
+        _id
+        name
+        brand
       }
-export type DeleteUserMutationHookResult = ReturnType<typeof useDeleteUserMutation>;
-export type DeleteUserMutationResult = Apollo.MutationResult<DeleteUserMutation>;
-export type DeleteUserMutationOptions = Apollo.BaseMutationOptions<DeleteUserMutation, DeleteUserMutationVariables>;
-export const GetAllUsersDocument = gql`
-    query GetAllUsers {
-  getAllUsers {
-    _id
-    firstName
-    lastName
+      instructions {
+        summary {
+          action
+          items
+        }
+        description
+        ingredients {
+          name
+          amount
+        }
+        time
+      }
+    }
   }
 }
     `;
 
 /**
- * __useGetAllUsersQuery__
+ * __useViewerQuery__
  *
- * To run a query within a React component, call `useGetAllUsersQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useViewerQuery` and pass it any options that fit your needs.
+ * When your component renders, `useViewerQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetAllUsersQuery({
+ * const { data, loading, error } = useViewerQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetAllUsersQuery(baseOptions?: Apollo.QueryHookOptions<GetAllUsersQuery, GetAllUsersQueryVariables>) {
+export function useViewerQuery(baseOptions?: Apollo.QueryHookOptions<ViewerQuery, ViewerQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAllUsersQuery, GetAllUsersQueryVariables>(GetAllUsersDocument, options);
+        return Apollo.useQuery<ViewerQuery, ViewerQueryVariables>(ViewerDocument, options);
       }
-export function useGetAllUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllUsersQuery, GetAllUsersQueryVariables>) {
+export function useViewerLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ViewerQuery, ViewerQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAllUsersQuery, GetAllUsersQueryVariables>(GetAllUsersDocument, options);
+          return Apollo.useLazyQuery<ViewerQuery, ViewerQueryVariables>(ViewerDocument, options);
         }
-export type GetAllUsersQueryHookResult = ReturnType<typeof useGetAllUsersQuery>;
-export type GetAllUsersLazyQueryHookResult = ReturnType<typeof useGetAllUsersLazyQuery>;
-export type GetAllUsersQueryResult = Apollo.QueryResult<GetAllUsersQuery, GetAllUsersQueryVariables>;
+export type ViewerQueryHookResult = ReturnType<typeof useViewerQuery>;
+export type ViewerLazyQueryHookResult = ReturnType<typeof useViewerLazyQuery>;
+export type ViewerQueryResult = Apollo.QueryResult<ViewerQuery, ViewerQueryVariables>;

@@ -1,14 +1,13 @@
 import React from "react";
-import './styles.css';
 import image from '../../assets/inkpx-word-art.png';
+import './styles.css';
 
 interface Props {
     renderConstants: string[],
-    setRender: React.Dispatch<React.SetStateAction<string>>,
-    setAuth: React.Dispatch<React.SetStateAction<boolean>>
+    setRender: React.Dispatch<React.SetStateAction<string>>
 };
 
-const NavbarNonAuth: React.FC<Props> = ({ renderConstants, setRender, setAuth }) => {
+const NavbarNonAuth: React.FC<Props> = ({ renderConstants, setRender }) => {
 
     const logoClick = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         e.preventDefault();
@@ -19,11 +18,6 @@ const NavbarNonAuth: React.FC<Props> = ({ renderConstants, setRender, setAuth })
         e.preventDefault();
         setRender(renderConstants[n]);
     };
-
-    const auth = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-        e.preventDefault();
-        setAuth(prevState => !prevState);
-    }
 
     const className = 'NavbarNonAuth';
     return (
@@ -42,9 +36,6 @@ const NavbarNonAuth: React.FC<Props> = ({ renderConstants, setRender, setAuth })
                 </li>
                 <li className={`${className}_listitem`} onClick={(e) => navClick(e, 2)}>
                     Signup
-                </li>
-                <li className={`${className}_listitem`} onClick={auth}>
-                    Auth
                 </li>
             </ul>
         </div>
